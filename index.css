@@ -1,24 +1,26 @@
 body {
   font-family: 'Quicksand', sans-serif;
-  background-color: gray;
+  background-color: #00f395;
 }
 
 .container {
   width: 90%;
-  margin: 100 auto;
-
+  margin: 0 auto;
 }
 
-.center {
-    text-align: center;
+/* Start http://www.cursors-4u.com */
+* {
+  cursor: url(http://ani.cursors-4u.net/cursors/cur-12/cur1138.ani),
+  url(http://ani.cursors-4u.net/cursors/cur-12/cur1138.png),
+  progress !important;
 }
+/* End http://www.cursors-4u.com */
 
 header {
   background-color: black;
   border-radius: 10px;
   position: fixed;
-  width: 98%;
-  height: %;
+  width: 98.7%;
   /*border: solid;
   border-radius: 10px;
   border-width: thin;
@@ -31,16 +33,16 @@ header::after {
   clear: both;
 }
 
-.navlogo {
+.logo {
+  position: relative;
   float: left;
-  width: 10.6%;
-  height: 10.6%;
+  width: 170px;
+  height: 75px;
   padding: 0px;
-  border-radius: 10px;
 }
 
 nav {
-  float: center;
+  float: right;
 }
 
 nav ul {
@@ -51,7 +53,7 @@ nav ul {
 
 nav li {
   display: inline-block;
-  margin-left: 9%;
+  margin-left: 100px;
   padding-top: 29px;
 
   position: relative;
@@ -61,18 +63,18 @@ nav a {
   color: white;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 90%;
+  font-size: 17px;
 }
 
 nav a:hover {
-  color: teal;
+  color: #00f395;
 }
 
 nav a::before {
   content: '';
   display: block;
   height: 5px;
-  background-color: teal;
+  background-color: #00f395;
 
   position: absolute;
   top: 0;
@@ -91,96 +93,4 @@ nav a:hover::before {
 
 iframe {
   padding-top: 100px;
-}
-* {box-sizing:border-box}
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
-
-.mySlides {
-    display: none;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 100%;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor:pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
 }
