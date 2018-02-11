@@ -1,90 +1,78 @@
 body {
-  font-family: 'Quicksand', sans-serif;
-  background-color: #00f395;
+	font-family: 'Quicksand', sans-serif;
+	background-color: #00f395;
 }
-
 .container {
-  width: 90%;
-  margin: 0 auto;
+	width: 90%;
+	margin: 0 auto;
 }
-
 /*Cursor Icon*/
+
 /** {
   cursor: url(http://ani.cursors-4u.net/cursors/cur-12/cur1138.ani), url(http://ani.cursors-4u.net/cursors/cur-12/cur1138.png), progress !important;
 }*/
 
 header {
-  background-color: black;
-  border-radius: 10px;
-  position: fixed;
-  width: 98.7%;
-  /*border: solid;
+	background-color: black;
+	border-radius: 10px;
+	position: fixed;
+	width: 98.7%;
+	/*border: solid;
   border-radius: 10px;
   border-width: thin;
   border-color: black;*/
 }
-
 header::after {
-  content: '';
-  display: table;
-  clear: both;
+	content: '';
+	display: table;
+	clear: both;
 }
-
 .logo {
-  position: relative;
-  float: left;
-  width: 170px;
-  height: 75px;
-  padding: 0px;
+	position: relative;
+	float: left;
+	width: 170px;
+	height: 75px;
+	padding: 0px;
 }
-
 nav {
-  float: right;
+	float: right;
 }
-
 nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
-
 nav li {
-  display: inline-block;
-  margin-left: 100px;
-  padding-top: 29px;
-  position: relative;
+	display: inline-block;
+	margin-left: 100px;
+	padding-top: 29px;
+	position: relative;
 }
-
 nav a {
-  color: white;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 17px;
+	color: white;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 17px;
 }
-
 nav a:hover {
-  color: #00f395;
+	color: #00f395;
 }
-
 nav a::before {
-  content: '';
-  display: block;
-  height: 5px;
-  background-color: #00f395;
-  position: absolute;
-  top: 0;
-  width: 0%;
-  transition: all ease-in-out 250ms;
+	content: '';
+	display: block;
+	height: 5px;
+	background-color: #00f395;
+	position: absolute;
+	top: 0;
+	width: 0%;
+	transition: all ease-in-out 250ms;
 }
-
 nav a:hover::before {
-  width: 100%;
+	width: 100%;
 }
-
 .top {
-  text-align: center;
+	text-align: center;
 }
-
 iframe {
-  padding-top: 100px;
+	padding-top: 100px;
 }
