@@ -1,6 +1,6 @@
 body {
 	font-family: 'Quicksand', sans-serif;
-	background-color: #00f395;
+	background-color: #00C9BF;
 }
 .container {
 	width: 90%;
@@ -55,13 +55,13 @@ nav a {
 	font-size: 17px;
 }
 nav a:hover {
-	color: #00f395;
+	color: #00C9BF;
 }
 nav a::before {
 	content: '';
 	display: block;
 	height: 5px;
-	background-color: #00f395;
+	background-color: #00C9BF;
 	position: absolute;
 	top: 0;
 	width: 0%;
