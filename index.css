@@ -70,6 +70,22 @@ nav a::before {
 nav a:hover::before {
 	width: 100%;
 }
+.slideshow {
+    padding-top: 100px;
+}
+@keyframes fade {
+    from {
+	opacity: .4;
+    }
+    to {
+	opacity: 1;
+    }
+}
+.fade {
+    display: none;
+    animation-name: fade;
+    animation-duration: 2s;
+}
 .top {
 	text-align: center;
 }
