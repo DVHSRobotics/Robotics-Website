@@ -1,10 +1,12 @@
-console.log("Hi!")
-Slides = document.getElementsByClassName("fade");
-console.log(Slides.length);
-for(i=0;i<Slides.length;i++) {
-    if(i>0) {
-	Slides[i-1].style.display = "none";
+'use strict';
+var Slides = document.getElementsByClassName("fade")
+var q = 0;
+showSlides();
+function showSlides() {
+    for(var i=0;i<Slides.length;i++) {
+	Slides[i].style.display = "none";
     }
-    Slides[i].style.display = "block";
+    Slides[q % Slides.length].style.display = "block";
+    q++;
+    setTimeout(showSlides,3000);
 }
-console.log("Bye!")

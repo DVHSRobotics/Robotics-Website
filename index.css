@@ -6,6 +6,7 @@ body {
 	width: 90%;
 	margin: 0 auto;
 }
+
 /*Cursor Icon*/
 
 /** {
@@ -17,6 +18,7 @@ header {
 	border-radius: 10px;
 	position: fixed;
 	width: 98.7%;
+	z-index: 1;
 	/*border: solid;
   border-radius: 10px;
   border-width: thin;
@@ -71,7 +73,13 @@ nav a:hover::before {
 	width: 100%;
 }
 .slideshow {
-    padding-top: 100px;
+    display: block;
+    position: relative;
+    left: 25%;
+    height: 450px;
+    width: 800px;
+    border-style: solid;
+    border-color: #000;
 }
 @keyframes fade {
     from {
@@ -80,14 +88,31 @@ nav a:hover::before {
     to {
 	opacity: 1;
     }
+    display: none;
 }
 .fade {
     display: none;
     animation-name: fade;
     animation-duration: 2s;
+    height: inherit;
+    width: inherit;
+}
+.Slide1 {
+    position: relative;
+    top: 100px;
+    left: 25%;
+    z-index: -1;
+}
+.Slide2 {
+    position: relative;
+    top: 100px;
+    left: 25%;
+    z-index: -2;
 }
 .top {
-	text-align: center;
+    text-align: center;
+    padding-top: 100px;
+    z-index: 0;
 }
 iframe {
 	padding-top: 100px;
