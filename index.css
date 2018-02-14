@@ -3,16 +3,17 @@ body {
 	font-family: 'Quicksand', sans-serif;
 }
 .container {
-  margin: 0 auto;
+  margin: auto;
 	width: 90%;
   height: 100%;
+
 }
 
 header {
 	background-color: black;
 	border-radius: 10px;
-	position: fixed;
-	width: 98.7%;
+	position: center;
+	width: 100%;
 	/*border: solid;
   border-radius: 10px;
   border-width: thin;
