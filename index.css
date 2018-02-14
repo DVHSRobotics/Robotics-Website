@@ -1,17 +1,13 @@
 body {
+  background-color: #00C9BF;
 	font-family: 'Quicksand', sans-serif;
-	background-color: #00C9BF;
 }
 .container {
-	width: 90%;
-	margin: 0 auto;
+    margin: auto;
+    width: 90%;
+    height: 100%;
+
 }
-
-/*Cursor Icon*/
-
-/** {
-  cursor: url(http://ani.cursors-4u.net/cursors/cur-12/cur1138.ani), url(http://ani.cursors-4u.net/cursors/cur-12/cur1138.png), progress !important;
-}*/
 
 header {
 	background-color: black;
@@ -21,49 +17,47 @@ header {
 	z-index: 1;
 }
 header::after {
+  clear: both;
 	content: '';
 	display: table;
-	clear: both;
 }
 .logo {
-	position: relative;
 	float: left;
-	width: 170px;
-	height: 75px;
-	padding: 0px;
+	padding: 0;
+	width: 9%;
 }
 nav {
 	float: right;
 }
 nav ul {
+  list-style: none;
 	margin: 0;
 	padding: 0;
-	list-style: none;
 }
 nav li {
 	display: inline-block;
-	margin-left: 100px;
-	padding-top: 29px;
+	margin-left: 30px;
+	padding-top: 7%;
 	position: relative;
 }
 nav a {
 	color: white;
-	text-decoration: none;
+  font-size: 1.3vw;
+  text-decoration: none;
 	text-transform: uppercase;
-	font-size: 17px;
 }
 nav a:hover {
 	color: #00C9BF;
 }
 nav a::before {
+	background-color: #00C9BF;
 	content: '';
 	display: block;
 	height: 5px;
-	background-color: #00C9BF;
 	position: absolute;
 	top: 0;
-	width: 0%;
 	transition: all ease-in-out 250ms;
+	width: 0;
 }
 nav a:hover::before {
 	width: 100%;
@@ -106,6 +100,9 @@ nav a:hover::before {
     padding-top: 100px;
     z-index: 0;
 }
-iframe {
+.video {
+	padding-top: 100px;
+}
+.image {
 	padding-top: 100px;
 }
