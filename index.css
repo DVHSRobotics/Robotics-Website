@@ -3,20 +3,17 @@ body {
 	font-family: 'Quicksand', sans-serif;
 }
 .container {
-  margin: 0 auto;
+  margin: auto;
 	width: 90%;
-}
-/*Cursor Icon*/
+  height: 100%;
 
-/** {
-  cursor: url(http://ani.cursors-4u.net/cursors/cur-12/cur1138.ani), url(http://ani.cursors-4u.net/cursors/cur-12/cur1138.png), progress !important;
-}*/
+}
 
 header {
 	background-color: black;
 	border-radius: 10px;
-	position: fixed;
-	width: 98.7%;
+	position: center;
+	width: 100%;
 	/*border: solid;
   border-radius: 10px;
   border-width: thin;
@@ -29,10 +26,8 @@ header::after {
 }
 .logo {
 	float: left;
-	height: 75px;
 	padding: 0;
-  position: relative;
-	width: 170px;
+	width: 9%;
 }
 nav {
 	float: right;
@@ -44,13 +39,13 @@ nav ul {
 }
 nav li {
 	display: inline-block;
-	margin-left: 100px;
-	padding-top: 29px;
+	margin-left: 30px;
+	padding-top: 7%;
 	position: relative;
 }
 nav a {
 	color: white;
-	font-size: 17px;
+  font-size: 1.3vw;
   text-decoration: none;
 	text-transform: uppercase;
 }
@@ -73,6 +68,9 @@ nav a:hover::before {
 .top {
 	text-align: center;
 }
-iframe {
+.video {
+	padding-top: 100px;
+}
+.image {
 	padding-top: 100px;
 }
