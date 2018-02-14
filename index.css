@@ -19,10 +19,6 @@ header {
 	position: fixed;
 	width: 98.7%;
 	z-index: 1;
-	/*border: solid;
-  border-radius: 10px;
-  border-width: thin;
-  border-color: black;*/
 }
 header::after {
 	content: '';
@@ -75,6 +71,7 @@ nav a:hover::before {
 .slideshow {
     display: block;
     position: relative;
+    top: 40px;
     left: 25%;
     height: 450px;
     width: 800px;
@@ -88,7 +85,6 @@ nav a:hover::before {
     to {
 	opacity: 1;
     }
-    display: none;
 }
 .fade {
     display: none;
@@ -97,17 +93,13 @@ nav a:hover::before {
     height: inherit;
     width: inherit;
 }
-.Slide1 {
+.Border {
+    display: block;
     position: relative;
-    top: 100px;
-    left: 25%;
-    z-index: -1;
-}
-.Slide2 {
-    position: relative;
-    top: 100px;
-    left: 25%;
-    z-index: -2;
+    top: -40px;
+    width: 100%;
+    height: 520px;
+    background-color: #00CAAF;
 }
 .top {
     text-align: center;
