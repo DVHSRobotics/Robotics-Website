@@ -101,7 +101,7 @@ nav a:hover::before {
     position: relative;
     top: -40px;
     width: 100%;
-    height: 520px;;
+    height: 520px;
 }
 .Button {
     cursor: pointer;
@@ -115,7 +115,7 @@ nav a:hover::before {
 }
 .Button:hover {
     transform: rotate(90deg);
-    opacity: 1;
+    opacity: 1 !important;
 }
 .Arrow {
     cursor: pointer;
@@ -143,3 +143,4 @@ nav a:hover::before {
 .image {
 	padding-top: 100px;
 }
+B
