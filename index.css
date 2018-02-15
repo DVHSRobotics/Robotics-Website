@@ -8,7 +8,6 @@ body {
     height: 100%;
 
 }
-
 header {
 	background-color: black;
 	border-radius: 10px;
@@ -62,31 +61,12 @@ nav a::before {
 nav a:hover::before {
 	width: 100%;
 }
-.slideshow {
-    display: block;
-    position: relative;
-    top: 40px;
-    left: 25%;
-    height: 450px;
-    width: 800px;
-    /*border-style: solid;
-    border-color: #000;*/
-}
 @keyframes fadeIn {
     from {
 	opacity: .4;
     }
     to {
 	opacity: 1;
-    }
-}
-@keyframes fadeOut {
-    from {
-	opacity: 1;
-    }
-    to {
-	opacity: 0;
-	display: none;
     }
 }
 .fade {
@@ -96,12 +76,19 @@ nav a:hover::before {
     height: inherit;
     width: inherit;
 }
+.slideshow {
+    display: block;
+    position: relative;
+    height: 450px;
+    width: 800px;
+    margin: auto;
+    margin-bottom: 40px;
+}
 .Border {
     display: block;
     position: relative;
-    top: -40px;
     width: 100%;
-    height: 520px;
+    margin: auto;
 }
 .Button {
     cursor: pointer;
@@ -143,4 +130,3 @@ nav a:hover::before {
 .image {
 	padding-top: 100px;
 }
-B
