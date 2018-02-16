@@ -9,57 +9,57 @@ body {
 
 }
 header {
-	background-color: black;
-	border-radius: 10px;
-	position: fixed;
-	width: 98.7%;
-	z-index: 1;
+    background-color: black;
+    border-radius: 10px;
+    position: fixed;
+    width: 98.7%;
+    z-index: 1;
 }
 header::after {
-  clear: both;
-	content: '';
-	display: table;
+    clear: both;
+    content: '';
+    display: table;
 }
 .logo {
-	float: left;
-	padding: 0;
-	width: 9%;
+    float: left;
+    padding: 0;
+    width: 9%;
 }
 nav {
-	float: right;
+    float: right;
 }
 nav ul {
-  list-style: none;
-	margin: 0;
-	padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 nav li {
-	display: inline-block;
-	margin-left: 30px;
-	padding-top: 7%;
-	position: relative;
+    display: inline-block;
+    margin-left: 30px;
+    padding-top: 7%;
+    position: relative;
 }
 nav a {
-	color: white;
-  font-size: 1.3vw;
-  text-decoration: none;
-	text-transform: uppercase;
+    color: white;
+    font-size: 1.3vw;
+    text-decoration: none;
+    text-transform: uppercase;
 }
 nav a:hover {
-	color: #00C9BF;
+    color: #00C9BF;
 }
 nav a::before {
-	background-color: #00C9BF;
-	content: '';
-	display: block;
-	height: 5px;
-	position: absolute;
-	top: 0;
-	transition: all ease-in-out 250ms;
-	width: 0;
+    background-color: #00C9BF;
+    content: '';
+    display: block;
+    height: 5px;
+    position: absolute;
+    top: 0;
+    transition: all ease-in-out 250ms;
+    width: 0;
 }
 nav a:hover::before {
-	width: 100%;
+    width: 100%;
 }
 @keyframes fadeIn {
     from {
@@ -82,13 +82,17 @@ nav a:hover::before {
     height: 450px;
     width: 800px;
     margin: auto;
-    margin-bottom: 40px;
+    margin-bottom: 55px;
 }
-.Border {
+.Enclosure {
     display: block;
     position: relative;
     width: 100%;
     margin: auto;
+}
+.Enclosure a {
+    height: inherit;
+    width: inherit;
 }
 .Button {
     cursor: pointer;
@@ -104,23 +108,27 @@ nav a:hover::before {
     transform: rotate(90deg);
     opacity: 1 !important;
 }
-.Arrow {
+.arrowBox {
     cursor: pointer;
     display: inline-block;
-    color: white;
     position: absolute;
-    top: 50%;
+    top: 0%;
     right: 0%;
-    height: 20px;
-    width: 10px;
-    opacity: 0.5;
+    height: 100%;
+    width: 5%;
     font-size: 24px;
-    margin-right: 5px;
     transition: all 0.2s ease-in;
+}    
+.arrowBox:hover {
+    background-color: rgba(0,0,0,0.5);
+    font-size: 32px;
 }
-.Arrow:hover {
-    opacity: 1;
-    font-size: 28px;
+.Arrow {
+    font-size: inherit;
+    position: absolute;
+    color: white;
+    top: calc(50% - 16px);
+    left: 33%;
 }
 .top {
     text-align: center;
@@ -128,5 +136,5 @@ nav a:hover::before {
     z-index: 0;
 }
 .image {
-	padding-top: 100px;
+    padding-top: 100px;
 }

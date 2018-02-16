@@ -32,9 +32,11 @@
   <div class="top">
 
     <!-- Slideshow -->
-    <div class="Border">
+    <div class="Enclosure">
       <div class="slideshow">
-	<a href="https://www.eastbaytimes.com/2018/02/05/antioch-schools-robotics-team-looks-for-financial-help/" style="width:inherit;height:inherit;">
+
+	<!-- Slides -->
+	<a href="https://www.eastbaytimes.com/2018/02/05/antioch-schools-robotics-team-looks-for-financial-help/">
 	  <img src="images/Article.jpg" class="fade">
 	</a>
 	<img src="images/OurTeam.jpg" class="fade">
@@ -44,11 +46,27 @@
 	  frameborder="0"
 	  allow="autoplay; encrypted-media">
 	</iframe>
+
+	<!-- Bottom gear-shaped transition buttons -->
 	<img src="images/Gear_Button.png" class="Button" onclick="showSlide(0)">
 	<img src="images/Gear_Button.png" class="Button" onclick="showSlide(1)">
 	<img src="images/Gear_Button.png" class="Button" onclick="showSlide(2)">
-	<div class="Arrow" onclick="showSlide(q+1)">&#10095;</div>
-	<div class="Arrow" style="left:0%;margin-left:5px;" onclick="showSlide(q-1)">&#10094;</div>
+
+	<!-- Play/Pause Button -->
+	<div class="PlayState" style="cursor:pointer" onclick="togglePlayState()">| |</div>
+
+	<!-- Transition arrows -->
+	<div class="arrowBox" onclick="showSlide(q+1)">
+	  <div class="Arrow">
+	    &#10095;
+	  </div>
+	</div>
+	<div class="arrowBox" style="left:0%;" onclick="showSlide(q-1)">
+	  <div class="Arrow">
+	    &#10094;
+	  </div>
+	</div>
+	
       </div>
     </div>
     

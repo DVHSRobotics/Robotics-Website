@@ -4,8 +4,11 @@
 
 var Slides = document.getElementsByClassName("fade");
 var Buttons = document.getElementsByClassName("Button");
+var playState = document.getElementsByClassName("PlayState")[0];
 var q = 0;
 var T;
+var playing = 1;
+var transitionPeriod = 10000;
 
 function showSlide(n) {
     
@@ -17,7 +20,20 @@ function showSlide(n) {
     Slides[q].style.display = "block";
     Buttons[q].style.opacity = "1";
     clearTimeout(T);
-    T = setTimeout(showSlide,10000,q+1);
+    T = playing ? setTimeout(showSlide,transitionPeriod,q+1) : T;
+    
+}
+
+function togglePlayState() {
+    
+    if(playing) {
+	clearTimeout(T);
+	playState.innerHTML = "\u25B6";
+    } else {
+	T = setTimeout(showSlide,transitionPeriod,q+1);
+	playState.innerHTML = "| |";
+    }
+    playing = !playing;
     
 }
 
