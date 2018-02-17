@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 body {
-  background-color: #00C9BF;
+  background-image: url("./images/background.jpg");
   font-family: 'Quicksand', sans-serif;
 }
 
@@ -87,11 +87,17 @@ nav a:hover::before {
   text-align: center;
 }
 
+.top-text{
+  text-align: center;
+  background-color: #00C9BF;
+  background-size: auto 100%;
+}
+
 .video {
   padding-top: 3vw;
   align-self: center;
 }
 
 .image {
-  padding-top: 1vw;
+  padding-top: 3vw;
 }
