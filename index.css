@@ -1,69 +1,101 @@
-body {
-    background-color: #00C9BF;
-    font-family: 'Quicksand', sans-serif;
-}
-.container {
-    margin: auto;
-    width: 90%;
-    height: 100%;
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 
+body {
+  background-image: url("./images/background-blur.jpg");
+  background-size: cover;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.container {
+  margin: auto;
+  width: 90%;
+  height: 100%;
 }
 header {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0%;
-    background-color: black;
-    border-radius: 1vw;
-    width: 100%;
-    z-index: 1;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0%;
+  background-color: #0BC4B9;
+  border-radius: 1vw;
+  position: center;
+  width: 100%;
+  z-index: 1;
 }
+
 header::after {
-    clear: both;
-    content: '';
-    display: table;
+  clear: both;
+  content: '';
+  display: table;
 }
+
 .logo {
-    float: left;
-    position: relative;
-    height: 5.5vw;
-    bottom: 0px;
+  float: left;
+  position: relative;
+  height: 5.5vw;
+  bottom: 0;
 }
+
 nav {
-    float: right;
+  float: right;
 }
+
 nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
+
 nav li {
-    display: inline-grid;
-    margin-left: 3vw;
-    padding-top: 2vw;
-    padding-bottom: 0.5vw;
-    position: relative;
+  display: inline-grid;
+  margin-left: 3vw;
+  padding-top: 2vw;
+  padding-bottom: 0.5vw;
+  position: relative;
 }
+
 nav a {
-    color: white;
-    font-size: 1.3vw;
-    vertical-align: bottom;
-    text-decoration: none;
-    text-transform: uppercase;
+  color: black;
+  font-size: 1.3vw;
+  vertical-align: bottom;
+  text-decoration: none;
+  text-transform: uppercase;
 }
+
 nav a:hover {
-    color: #00C9BF;
+  color: white;
 }
+
 nav a::before {
-    background-color: #00C9BF;
-    content: '';
-    display: block;
-    height: 0.5vw;
-    position: absolute;
-    top: 0px;
-    transition: all ease-in-out 250ms;
-    width: 0px;
+  background-color: white;
+  content: '';
+  display: block;
+  height: 0.5vw;
+  position: absolute;
+  top: 0;
+  transition: all ease-in-out 250ms;
+  width: 0;
 }
+
 nav a:hover::before {
+  width: 100%;
+}
+
+.top {
+  text-align: center;
+}
+
+.top-text {
+  text-align: center;
+
+  /*
+  background-color: ;
+  */
+  background-size: auto 100%;
+}
+
+.video {
+  padding-top: 3vw;
+  align-self: center;
     width: 100%;
 }
 @keyframes fadeIn {
@@ -140,6 +172,7 @@ nav a:hover::before {
     padding-top: 30px;
     z-index: 0;
 }
+
 .image {
-    padding-top: 100px;
+  padding-top: 3vw;
 }
