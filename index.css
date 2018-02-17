@@ -167,14 +167,13 @@ nav a:hover::before {
 
 .arrowBox:hover {
   background-color: rgba(0, 0, 0, 0.5);
-  font-size: 32px;
 }
 
 .Arrow {
   font-size: inherit;
   position: absolute;
   color: white;
-  top: calc(50% - 16px);
+  top: calc(50% - 12px);
   left: 33%;
 }
 
