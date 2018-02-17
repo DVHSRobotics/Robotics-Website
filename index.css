@@ -163,6 +163,8 @@ nav a:hover::before {
   width: 5%;
   font-size: 24px;
   transition: all 0.2s ease-in;
+  align-items: center;
+  align-content: center;
 }
 
 .arrowBox:hover {
@@ -174,7 +176,6 @@ nav a:hover::before {
   position: absolute;
   color: white;
   top: calc(50% - 12px);
-  left: 33%;
 }
 
 .image {
