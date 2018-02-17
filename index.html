@@ -9,9 +9,11 @@
 
   <!-- GSuite Verification. DO NOT DELETE!!! -->
   <meta name="google-site-verification" content="QfQ8gw4WO_ZCZuy-MN7A_0GdbJl_mBEOg3SC9yqfRkI" />
+  <link href="css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
+  
   <header>
     <div class="container" name="viewport" content="initial-scale=1">
       <a href="../index.html"><img alt="NexGen Logo" class="logo" src="./images/banner-trans.png"></a>
@@ -30,17 +32,63 @@
 
   <div class="top">
 
-    <iframe
-      class="video"
-      width="800"
-      height="450"
-      src="https://www.youtube.com/embed/HZbdwYiCY74"
-      frameborder="0"
-      allow="autoplay; encrypted-media">
-    </iframe>
+    <!-- Slideshow -->
+    <div class="Enclosure">
+      <div class="slideshow">
 
+	<!-- Slides -->
+	<a href="https://www.eastbaytimes.com/2018/02/05/antioch-schools-robotics-team-looks-for-financial-help/">
+	  <img src="images/Article.jpg" class="fade">
+	</a>
+	<img src="images/OurTeam.jpg" class="fade">
+	<iframe
+	  class="fade"
+	  src="https://www.youtube.com/embed/HZbdwYiCY74"
+	  frameborder="0"
+	  allow="autoplay; encrypted-media">
+	</iframe>
+
+	<!-- Bottom gear-shaped transition buttons -->
+	<img src="images/Gear_Button.png" class="Button" onclick="showSlide(0)">
+	<img src="images/Gear_Button.png" class="Button" onclick="showSlide(1)">
+	<img src="images/Gear_Button.png" class="Button" onclick="showSlide(2)">
+
+	<!-- Play/Pause Button -->
+	<div class="PlayState" style="cursor:pointer" onclick="togglePlayState()"><i class="mdi mdi-pause-circle mdi-24px"></i></div>
+
+	<!-- Transition arrows -->
+	<div class="arrowBox" style="left:0%;" onclick="showSlide(q-1)">
+	  <div class="Arrow mdi mdi-chevron-left mdi-36px"></div>
+	</div>
+  
+	<div class="arrowBox" onclick="showSlide(q+1)">
+	  <div class="Arrow mdi mdi-chevron-right mdi-36px"></div>
+	</div>
+	
+    </div>
+    </div>
+    
     <h1>"I can either watch it happen or be a part of it." -Elon Musk</h1>
+    <br>
+    <table border="0" style="text-align:justify" width="95%" align="center">
+      <tr>
+        <td>
+          <h3>
+            We are a Deer Valley High School club dedicated to exposing students to the glorious world of robotics.
+            Students get the opportunity to learn about teamwork, programming, design, and handiwork while preparing for the
+	    <a href="https://www.firstinspires.org/robotics/frc">First Robotics Competition</a>
+	    held at UC Davis at the end of the year.
+            Through our club, students are also introduced to possible career choices in STEM, such as computer science and engineering.
+            We will put our absolute best effort into climbing the ranks at the UC Davis competition and other competitions in the future.
+            NexGen will strive for success and NexGen will work to be the best of the Next Generation.
+          </h3>
+        </td>
+      </tr>
+    </table>
   </div>
+
+  <script src="index.js"></script>
+  
 </body>
 
 </html>
