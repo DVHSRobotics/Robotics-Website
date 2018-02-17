@@ -1,5 +1,10 @@
 'use strict';
 
+var link = document.createElement('link');
+link.setAttribute('rel', 'stylesheet');
+link.setAttribute('type', 'text/css');
+link.setAttribute('href', 'css/materialdesignicons.min.css');
+
 /* Slideshow */
 
 var Slides = document.getElementsByClassName("fade");
@@ -28,10 +33,10 @@ function togglePlayState() {
     
     if(playing) {
 	clearTimeout(T);
-	playState.innerHTML = "\u25B6";
+	playState.innerHTML = '<i class="mdi mdi-play-circle mdi-24px"></i>';
     } else {
 	T = setTimeout(showSlide,transitionPeriod,q+1);
-	playState.innerHTML = "| |";
+	playState.innerHTML = '<i class="mdi mdi-pause-circle mdi-24px"></i>';
     }
     playing = !playing;
     
