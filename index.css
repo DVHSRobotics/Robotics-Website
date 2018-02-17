@@ -11,13 +11,13 @@ body {
   width: 90%;
   height: 100%;
 }
+
 header {
   position: -webkit-sticky;
   position: sticky;
   top: 0%;
   background-color: #0BC4B9;
   border-radius: 1vw;
-  position: center;
   width: 100%;
   z-index: 1;
 }
@@ -61,6 +61,11 @@ nav a {
   text-transform: uppercase;
 }
 
+.Enclosure a {
+  height: inherit;
+  width: inherit;
+}
+
 nav a:hover {
   color: white;
 }
@@ -82,6 +87,8 @@ nav a:hover::before {
 
 .top {
   text-align: center;
+  padding-top: 30px;
+  z-index: 0;
 }
 
 .top-text {
@@ -96,81 +103,79 @@ nav a:hover::before {
 .video {
   padding-top: 3vw;
   align-self: center;
-    width: 100%;
 }
+
 @keyframes fadeIn {
-    from {
-	opacity: .4;
-    }
-    to {
-	opacity: 1;
-    }
+  from {
+    opacity: 0.4;
+  } to {
+    opacity: 1;
+  }
 }
+
 .fade {
-    display: none;
-    animation-name: fadeIn;
-    animation-duration: 2s;
-    height: inherit;
-    width: inherit;
+  display: none;
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  height: inherit;
+  width: inherit;
 }
+
 .slideshow {
-    display: block;
-    position: relative;
-    height: 450px;
-    width: 800px;
-    margin: auto;
-    margin-bottom: 55px;
+  display: block;
+  position: relative;
+  height: 450px;
+  width: 800px;
+  margin: auto;
+  margin-bottom: 55px;
 }
+
 .Enclosure {
-    display: block;
-    position: relative;
-    width: 100%;
-    margin: auto;
+  display: block;
+  position: relative;
+  width: 100%;
+  margin: auto;
 }
-.Enclosure a {
-    height: inherit;
-    width: inherit;
-}
+
 .Button {
-    cursor: pointer;
-    display: inline-block;
-    height: 20px;
-    width: 20px;
-    margin-top: 5px;
-    border-radius: 50%;
-    opacity: .5;
-    transition: all 0.3s ease-in;
+  cursor: pointer;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  margin-top: 5px;
+  border-radius: 50%;
+  opacity: 0.5;
+  transition: all 0.3s ease-in;
 }
+
 .Button:hover {
-    transform: rotate(90deg);
-    opacity: 1 !important;
+  transform: rotate(90deg);
+  opacity: 1 !important;
 }
+
 .arrowBox {
-    cursor: pointer;
-    display: inline-block;
-    position: absolute;
-    top: 0%;
-    right: 0%;
-    height: 100%;
-    width: 5%;
-    font-size: 24px;
-    transition: all 0.2s ease-in;
-}    
+  cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  height: 100%;
+  width: 5%;
+  font-size: 24px;
+  transition: all 0.2s ease-in;
+}
+
 .arrowBox:hover {
-    background-color: rgba(0,0,0,0.5);
-    font-size: 32px;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 32px;
 }
+
 .Arrow {
-    font-size: inherit;
-    position: absolute;
-    color: white;
-    top: calc(50% - 16px);
-    left: 33%;
-}
-.top {
-    text-align: center;
-    padding-top: 30px;
-    z-index: 0;
+  font-size: inherit;
+  position: absolute;
+  color: white;
+  top: calc(50% - 16px);
+  left: 33%;
 }
 
 .image {
