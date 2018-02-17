@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 body {
-  background-image: url("./images/background_1.jpg");
+  background-image: url("./images/background-blur.jpg");
+  background-size: cover;
   font-family: 'Quicksand', sans-serif;
 }
 
@@ -12,7 +13,7 @@ body {
 }
 
 header {
-  background-color: #0bc4b9;
+  background-color: #0BC4B9;
   border-radius: 1vw;
   position: center;
   width: 100%;
@@ -87,9 +88,12 @@ nav a:hover::before {
   text-align: center;
 }
 
-.top-text{
+.top-text {
   text-align: center;
-  background-color: #00C9BF;
+
+  /*
+  background-color: ;
+  */
   background-size: auto 100%;
 }
 
