@@ -57,20 +57,21 @@
 	<div class="PlayState" style="cursor:pointer" onclick="togglePlayState()"><i class="mdi mdi-pause-circle mdi-24px"></i></div>
 
 	<!-- Transition arrows -->
-	<div class="arrowBox" style="left:0%;" onclick="showSlide(q-1)">
-	  <div class="Arrow mdi mdi-chevron-left mdi-36px"></div>
+	<div class="arrowBox" style="left:0%;"
+	     onmouseover="setArrows(0,1)" onmouseout="setArrows(0,0)" onclick="showSlide(q-1)">
+	  <i class="Arrow mdi mdi-chevron-left"></i>
+	</div>  
+	<div class="arrowBox" onmouseover="setArrows(1,1)" onmouseout="setArrows(1,0)" onclick="showSlide(q+1)">
+	  <i class="Arrow mdi mdi-chevron-right"></i>
 	</div>
-
-	<div class="arrowBox" onclick="showSlide(q+1)">
-	  <div class="Arrow mdi mdi-chevron-right mdi-36px"></div>
-	</div>
-
-    </div>
+	
+      </div>
     </div>
 
     <h1>"I can either watch it happen or be a part of it." -Elon Musk</h1>
+    
   </div>
-
+  
   <script src="index.js"></script>
 
 </body>

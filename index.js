@@ -1,10 +1,5 @@
 'use strict';
 
-var link = document.createElement('link');
-link.setAttribute('rel', 'stylesheet');
-link.setAttribute('type', 'text/css');
-link.setAttribute('href', 'css/materialdesignicons.min.css');
-
 /* Slideshow */
 
 var Slides = document.getElementsByClassName("fade");
@@ -43,3 +38,11 @@ function togglePlayState() {
 }
 
 showSlide(q);
+
+function setArrows(i,n) {
+    var Arrow = document.getElementsByClassName('Arrow')[i].style;
+    Arrow.top = `calc(50% - ${n?24:18}px)`;
+    Arrow.fontSize = `${n?48:36}px`;
+}
+
+
