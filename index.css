@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 body {
-  background-size: cover;
   font-family: 'Quicksand', sans-serif;
 }
 
@@ -14,8 +13,8 @@ body {
 header {
   position: -webkit-sticky;
   position: sticky;
-  top: 0%;
-  background-color: #0BC4B9;
+  top: 0;
+  background-color: #26A69A;
   border-radius: 1vw;
   width: 100%;
   z-index: 1;
@@ -152,8 +151,8 @@ nav a:hover::before {
   cursor: pointer;
   display: inline-block;
   position: absolute;
-  top: 0%;
-  right: 0%;
+  top: 0;
+  right: 0;
   height: 100%;
   width: 48px;
   transition: all 0.2s ease-in;
