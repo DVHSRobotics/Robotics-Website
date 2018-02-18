@@ -21,6 +21,7 @@
       :root {
         --mdc-theme-primary: #26A69A;
       }
+
     </style>
 
     <!-- Custom CSS -->
@@ -38,8 +39,16 @@
   </head>
 
   <body class="mdc-typography">
+    <header class="mdc-toolbar mdc-toolbar--fixed">
+      <div class="mdc-toolbar__row">
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+          <a href="#" class="mdi mdi-24px mdi-menu mdc-toolbar__menu-icon"></a>
+          <span class="mdc-toolbar__title">DVHS Robotics</span>
+        </section>
+      </div>
+    </header>
+    
     <nav class="mdc-drawer mdc-drawer--permanent mdc-typography">
-      <div class="mdc-drawer__toolbar-spacer"></div>
       <div class="mdc-drawer__content">
         <nav id="" class="mdc-list">
           <a class="mdc-list-item mdc-list-item--activated" href="#">
@@ -60,14 +69,10 @@
         </nav>
       </div>
     </nav>
-
-    <header class="mdc-toolbar mdc-toolbar--fixed">
-      <div class="mdc-toolbar__row">
-        <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-          <a href="#" class="mdi mdi-24px mdi-menu mdc-toolbar__menu-icon"></a>
-          <span class="mdc-toolbar__title">DVHS Robotics</span>
-        </section>
-      </div>
-    </header>
   </body>
+
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <script>
+    mdc.autoInit()
+  </script>
 </html>
