@@ -17,7 +17,7 @@ var transitionPeriod = 10000;
 
 function showSlide(n) {
     
-    for(var i = 0;i < Slides.length;i++) {
+    for(var i = 0; i < Slides.length; i++) {
 	Slides[i].style.display = "none";
 	Buttons[i].style.opacity = ".5";
     }
