@@ -41,6 +41,7 @@ showSlide(q);
 
 function setArrows(i,n) {
     document.getElementsByClassName('Arrow')[i].style.top = `calc(50% - ${n?24:18}px)`;
+    document.getElementsByClassName('Arrow')[i].style.left = `calc(50% - ${n?24:18}px)`;
     document.getElementsByClassName('Arrow')[i].style.fontSize = `${n?48:36}px`;
 }
 

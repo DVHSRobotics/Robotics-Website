@@ -166,11 +166,12 @@ nav a:hover::before {
 
 .Arrow {
   position: absolute;
+  width: 100%;
   color: white;
   top: calc(50% - 18px);
+  left: calc(50% - 18px);
   transition: all 0.2s ease-in;
   font-size: 36px;
-  left: 0%;
 }
 
 .image {
