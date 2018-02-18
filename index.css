@@ -174,7 +174,8 @@ nav a:hover::before {
   font-size: inherit;
   position: absolute;
   color: white;
-  top: calc(50% - 12px);
+  top: 50%;
+  right: 2px;
 }
 
 .image {
