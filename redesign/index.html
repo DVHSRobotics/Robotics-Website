@@ -11,9 +11,25 @@
 
     <!-- Material Design Icons-->
     <link rel="stylesheet" type="text/css" media="all" href="/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <!-- GSuite Verification. DO NOT DELETE!!! -->
     <meta name="google-site-verification" content="QfQ8gw4WO_ZCZuy-MN7A_0GdbJl_mBEOg3SC9yqfRkI">
+
+    <!-- MD Theme -->
+    <style>
+      :root {
+        --mdc-theme-primary: #26A69A;
+      }
+
+      #greeting-form>button {
+        margin-top: 8px;
+      }
+
+    </style>
+
+    <!-- Custom CSS -->
+    <link rel="sytlesheet" type="text/css" href="index.css">
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
@@ -27,9 +43,36 @@
   </head>
 
   <body class="mdc-typography">
-    <h1 class="mdc-typography--display1">Hello, World!</h1>
-    <button type="button" class="mdc-button mdc-button--raised">
-      Press Me
-    </button>
+    <nav class="mdc-drawer mdc-drawer--permanent mdc-typography">
+      <div class="mdc-drawer__toolbar-spacer"></div>
+      <div class="mdc-drawer__content">
+        <nav id="" class="mdc-list">
+          <a class="mdc-list-item mdc-list-item--activated" href="#">
+            <i class="mdi mdi-24px mdi-home mdc-list-item__graphic" aria-hidden="true"></i> Home
+          </a>
+          <a class="mdc-list-item" href="#">
+            <i class="mdi mdi-24px mdi-account-circle mdc-list-item__graphic" aria-hidden="true"></i> Our Team
+          </a>
+          <a class="mdc-list-item" href="#">
+            <i class="mdi mdi-24px mdi-currency-usd mdc-list-item__graphic" aria-hidden="true"></i> Sponsors
+          </a>
+          <a class="mdc-list-item" href="#">
+            <i class="mdi mdi-24px mdi-calendar mdc-list-item__graphic" aria-hidden="true"></i> Calendar
+          </a>
+          <a class="mdc-list-item" href="#">
+            <i class="mdi mdi-24px mdi-gift mdc-list-item__graphic" aria-hidden="true"></i> Donate
+          </a>
+        </nav>
+      </div>
+    </nav>
+
+    <header class="mdc-toolbar mdc-toolbar--fixed">
+      <div class="mdc-toolbar__row">
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+          <a href="#" class="material-icons mdc-toolbar__menu-icon">menu</a>
+          <span class="mdc-toolbar__title">DVHS Robotics</span>
+        </section>
+      </div>
+    </header>
   </body>
 </html>
