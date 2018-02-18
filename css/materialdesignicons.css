@@ -15,6 +15,7 @@
   line-height: inherit;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: all 0.2s ease-in;
 }
 
 .mdi-access-point:before {
