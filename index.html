@@ -57,11 +57,11 @@
 	<div class="PlayState" style="cursor:pointer" onclick="togglePlayState()"><i class="mdi mdi-pause-circle mdi-24px"></i></div>
 
 	<!-- Transition arrows -->
-	<div class="arrowBox" style="left:0%;" onclick="showSlide(q-1)">
-	  <div class="Arrow mdi mdi-chevron-left mdi-36px"></div>
-	</div>
-  
-	<div class="arrowBox" onclick="showSlide(q+1)">
+	<div class="arrowBox" style="left:0%;"
+	     onmouseover="setArrows(0,1)" onmouseout="setArrows(0,0)" onclick="showSlide(q-1)">
+	  <div class="Arrow">&#10094;</div>
+	</div>  
+	<div class="arrowBox" onmouseover="setArrows(1,1)" onmouseout="setArrows(1,0)" onclick="showSlide(q+1)">
 	  <div class="Arrow mdi mdi-chevron-right mdi-36px"></div>
 	</div>
 	

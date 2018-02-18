@@ -93,10 +93,6 @@ nav a:hover::before {
 
 .top-text {
   text-align: center;
-
-  /*
-  background-color: ;
-  */
   background-size: auto 100%;
 }
 
@@ -161,10 +157,8 @@ nav a:hover::before {
   right: 0%;
   height: 100%;
   width: 5%;
-  font-size: 24px;
-  transition: all 0.2s ease-in;
-  align-items: center;
   align-content: center;
+  transition: all 0.2s ease-in;
 }
 
 .arrowBox:hover {
@@ -172,10 +166,12 @@ nav a:hover::before {
 }
 
 .Arrow {
-  font-size: inherit;
+  font-size: 24px;
   position: absolute;
   color: white;
-  top: calc(50% - 12px);
+  top: calc(50% - 18px);
+  transition: all 0.2s ease-in;
+  left: 33%;
 }
 
 .image {
