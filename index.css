@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 body {
-  background-image: url("./images/background-blur.jpg");
-  background-size: cover;
+  background-color: #FAFAFA;
   font-family: 'Quicksand', sans-serif;
 }
 
