@@ -1,0 +1,22 @@
+nav.navbar {
+  background-color: #0BC4B9; }
+  nav.navbar img.navbar-brand {
+    width: 90px;
+    height: auto; }
+  nav.navbar button.navbar-toggler .navbar-toggler-icon i.fa-bars {
+    color: white; }
+    nav.navbar button.navbar-toggler .navbar-toggler-icon i.fa-bars:hover {
+      color: black; }
+  nav.navbar .navbar-collapse ul li.nav-item a.nav-link {
+    color: white; }
+    nav.navbar .navbar-collapse ul li.nav-item a.nav-link:hover {
+      color: black; }
+
+div.body-light {
+  background-color: #eee; }
+
+.carousel {
+  padding: 1rem 0 1rem;
+  width: 100%; }
+
+/*# sourceMappingURL=main.css.map */

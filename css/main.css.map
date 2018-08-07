@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,UAAW;EAEP,gBAAgB,EAAE,OAAO;EAEzB,2BAAiB;IACb,KAAK,EAAE,IAAI;IACX,MAAM,EAAE,IAAI;EAKR,+DAAU;IACN,KAAK,EAAE,KAAK;IACZ,qEAAQ;MACJ,KAAK,EAAE,KAAK;EAShB,qDAAU;IACN,KAAK,EAAE,KAAK;IACZ,2DAAQ;MACJ,KAAK,EAAE,KAAK;;AC1BpC,cAAe;EACX,gBAAgB,EAAE,IAAI;;ACD1B,SAAU;EACN,OAAO,EAAE,WAAW;EACpB,KAAK,EAAE,IAAI",
+"sources": ["../scss/layout/_navbar.scss","../scss/layout/_body-light.scss","../scss/module/_carousel.scss"],
+"names": [],
+"file": "main.css"
+}
