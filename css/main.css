@@ -26,6 +26,9 @@ div.body-dark {
   text-align: center;
   padding-top: 5%; }
 
+footer {
+  background-color: #0BC4B9; }
+
 .carousel {
   padding: 1rem 0 1rem;
   width: 100%; }
@@ -56,12 +59,22 @@ div.body-dark {
 .card {
   margin: 8px 0px 8px; }
   .card img.powerup {
-    padding: 2rem; }
+    padding: 1rem; }
+
+.sponsor {
+  text-align: center;
+  padding: 1rem; }
+  .sponsor:hover {
+    background-color: #8c8c8c; }
 
 h1 {
   text-align: center;
-  margin: 1rem;
+  margin-top: 0;
   color: white;
   padding: 1rem; }
+
+h3 {
+  color: white;
+  text-align: center; }
 
 /*# sourceMappingURL=main.css.map */
