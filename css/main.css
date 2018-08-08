@@ -19,7 +19,10 @@ nav.navbar {
 div.body-light {
   background-color: #eee; }
 
-.calender {
+div.body-dark {
+  background-color: #666; }
+
+.calendar {
   text-align: center;
   padding-top: 5%; }
 
@@ -28,14 +31,37 @@ div.body-light {
   width: 100%; }
 
 .jumbotron {
-  background-image: url("../assets/background-blur.jpg");
-  background-size: cover; }
+  background-color: #666;
+  margin: 0; }
   .jumbotron .container {
     margin: auto;
-    text-align: center; }
+    text-align: center;
+    color: #ededed; }
+    .jumbotron .container button.btn-rounded {
+      border-radius: 50px; }
+      .jumbotron .container button.btn-rounded a {
+        color: white; }
+        .jumbotron .container button.btn-rounded a:hover {
+          color: black; }
 
 .name-box {
   text-align: center;
   margin: auto; }
+
+.kickoff a {
+  color: red; }
+  .kickoff a:hover {
+    color: #b30000; }
+
+.card {
+  margin: 8px 0px 8px; }
+  .card img.powerup {
+    padding: 2rem; }
+
+h1 {
+  text-align: center;
+  margin: 1rem;
+  color: white;
+  padding: 1rem; }
 
 /*# sourceMappingURL=main.css.map */

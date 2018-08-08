@@ -1,8 +1,19 @@
 .jumbotron {
-    background-image: url('../assets/background-blur.jpg');
-    background-size: cover;
+    background-color: #666;
+    margin: 0;
     .container {
         margin: auto;
         text-align: center;
+        color: #ededed;
+        button.btn-rounded{
+            border-radius: 50px;
+            a {
+                color: white;
+                &:hover {
+                    color: black;
+                }
+            }
+        }
+
     }
 }
