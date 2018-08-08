@@ -11,12 +11,31 @@ nav.navbar {
     color: white; }
     nav.navbar .navbar-collapse ul li.nav-item a.nav-link:hover {
       color: black; }
+  nav.navbar .navbar-collapse ul li.nav-item button {
+    padding: 0;
+    padding-right: 5px;
+    font-size: 0.8rem; }
 
 div.body-light {
   background-color: #eee; }
 
+.calender {
+  text-align: center;
+  padding-top: 5%; }
+
 .carousel {
   padding: 1rem 0 1rem;
   width: 100%; }
+
+.jumbotron {
+  background-image: url("../assets/background-blur.jpg");
+  background-size: cover; }
+  .jumbotron .container {
+    margin: auto;
+    text-align: center; }
+
+.name-box {
+  text-align: center;
+  margin: auto; }
 
 /*# sourceMappingURL=main.css.map */
