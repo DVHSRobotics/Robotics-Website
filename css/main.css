@@ -26,8 +26,19 @@ div.body-dark {
   text-align: center;
   padding-top: 5%; }
 
-footer {
-  background-color: #0BC4B9; }
+footer .footer-heading {
+  padding: 1.5rem 0 0rem 1rem; }
+footer .footer-subheading {
+  padding-left: 1rem; }
+footer .footer-list-heading {
+  padding-top: 1.5rem; }
+footer .footer-list a {
+  color: #cccccc; }
+  footer .footer-list a:hover {
+    color: white; }
+
+.dark-footer {
+  background-color: #333; }
 
 .carousel {
   padding: 1rem 0 1rem;
@@ -49,7 +60,9 @@ footer {
 
 .name-box {
   text-align: center;
-  margin: auto; }
+  line-height: 1.5rem;
+  margin: 0;
+  width: 100%; }
 
 .kickoff a {
   color: red; }
@@ -67,6 +80,23 @@ footer {
   .sponsor:hover {
     background-color: #8c8c8c; }
 
+.team-image {
+  margin: auto;
+  margin-bottom: 1rem;
+  text-align: center;
+  width: 100%;
+  max-height: 100%; }
+
+.team-image-sm {
+  margin: auto;
+  margin-bottom: 1rem;
+  text-align: center;
+  max-width: 100%;
+  max-height: 100%; }
+
+.header-dark {
+  color: black; }
+
 h1 {
   text-align: center;
   margin-top: 0;
@@ -75,6 +105,12 @@ h1 {
 
 h3 {
   color: white;
+  text-align: center; }
+
+button {
+  color: white; }
+
+img {
   text-align: center; }
 
 /*# sourceMappingURL=main.css.map */

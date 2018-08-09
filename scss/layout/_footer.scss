@@ -1,3 +1,23 @@
 footer {
-    background-color: #0BC4B9;
+    .footer-heading {
+        padding: 1.5rem 0 0rem 1rem;
+    }
+    .footer-subheading {
+        padding-left: 1rem;
+    }
+    .footer-list-heading {
+        padding-top: 1.5rem;
+    }
+    .footer-list {
+        a {
+            color: darken(#fff, 20%);
+            &:hover {
+                color: white;
+            }
+        }
+    }
+}
+
+.dark-footer {
+    background-color: #333;
 }
