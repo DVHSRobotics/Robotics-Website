@@ -8,9 +8,8 @@ CSS is written in [SCSS](https://sass-lang.com/guide).
 SCSS is loosely organized according to [SMACSS](https://smacss.com/book/categorizing).
 
 ## To-Do List
-*Get images of robots
-*Make the sponsors page look cool
-*Add footer
-*Create pages for each year/team?
-*Create maintanance guide for website
-
+* Remove/compress large images
+* Fix footer in mobile
+* Add 2017 robot pictures and member names
+* Get list of sponsors and add them in if any
+* Create maintanance/update guide for website
