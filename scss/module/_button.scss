@@ -1,8 +1,15 @@
 .kickoff {
+    padding-left: 1rem;
+    padding-right: 1rem;
     a {
         color: red;
         &:hover {
             color: darken(red, 15%);
         }
     }
+}
+
+.our-robot {
+    padding-left: 1rem;
+    padding-right: 1rem;
 }

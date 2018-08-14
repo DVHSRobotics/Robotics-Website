@@ -30,6 +30,8 @@ footer .footer-heading {
   padding: 1.5rem 0 0rem 1rem; }
 footer .footer-subheading {
   padding-left: 1rem; }
+footer .contact-email {
+  padding-left: 0; }
 footer .footer-list-heading {
   padding-top: 1.5rem; }
 footer .footer-list a {
@@ -40,6 +42,13 @@ footer .footer-list a {
 .dark-footer {
   background-color: #333; }
 
+@media screen and (max-width: 991px) {
+  footer {
+    padding-left: 0; }
+    footer .footer-heading {
+      padding-left: 0; }
+    footer .footer-subheading {
+      padding-left: 0; } }
 .carousel {
   padding: 1rem 0 1rem;
   width: 100%; }
@@ -64,21 +73,34 @@ footer .footer-list a {
   margin: 0;
   width: 100%; }
 
-.kickoff a {
-  color: red; }
-  .kickoff a:hover {
-    color: #b30000; }
+.kickoff {
+  padding-left: 1rem;
+  padding-right: 1rem; }
+  .kickoff a {
+    color: red; }
+    .kickoff a:hover {
+      color: #b30000; }
+
+.our-robot {
+  padding-left: 1rem;
+  padding-right: 1rem; }
 
 .card {
   margin: 8px 0px 8px; }
   .card img.powerup {
     padding: 1rem; }
 
+@media screen and (max-width: 992px) {
+  .card-side-column {
+    display: none; } }
 .sponsor {
   text-align: center;
   padding: 1rem; }
   .sponsor:hover {
     background-color: #8c8c8c; }
+  .sponsor img {
+    height: 200px;
+    width: auto; }
 
 .team-image {
   margin: auto;

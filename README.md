@@ -9,7 +9,6 @@ SCSS is loosely organized according to [SMACSS](https://smacss.com/book/categori
 
 ## To-Do List
 * Remove/compress large images
-* Fix footer in mobile
 * Add 2017 robot pictures and member names
 * Get list of sponsors and add them in if any
 * Create maintanance/update guide for website

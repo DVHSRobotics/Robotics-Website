@@ -5,6 +5,9 @@ footer {
     .footer-subheading {
         padding-left: 1rem;
     }
+    .contact-email {
+        padding-left: 0;
+    }
     .footer-list-heading {
         padding-top: 1.5rem;
     }
@@ -20,4 +23,16 @@ footer {
 
 .dark-footer {
     background-color: #333;
+}
+
+@media screen and (max-width: 991px) {
+    footer {
+        padding-left: 0;
+        .footer-heading {
+            padding-left: 0;
+        }
+        .footer-subheading {
+            padding-left: 0;
+        }
+    }
 }

@@ -4,3 +4,10 @@
         padding: 1rem;
     }
 }
+
+@media screen and (max-width: 992px) { 
+    //padding now works for every width except 992 pixels
+    .card-side-column {
+        display: none;
+    }
+}
