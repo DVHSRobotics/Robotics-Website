@@ -8,7 +8,7 @@ CSS is written in [SCSS](https://sass-lang.com/guide).
 SCSS is loosely organized according to [SMACSS](https://smacss.com/book/categorizing).
 
 ## To-Do List
-* Remove/compress large images
 * Add 2017 robot pictures and member names
 * Get list of sponsors and add them in if any
+* Write custom calendar?
 * Create maintanance/update guide for website
