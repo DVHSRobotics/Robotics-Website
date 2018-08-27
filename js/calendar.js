@@ -2,6 +2,7 @@
 //Define Functions and Initial Variables
 //----------------------------------
 var weekIndex = 0; //number of weeks displaced from current week (signed)
+var daysOfWeek = ['sun','mon','tue','wed','thu','fri','sat'];
 
 //initializes calendar with current date and populates calendar 
 function calendarInit() {
@@ -12,9 +13,7 @@ function calendarInit() {
 
 //grabs date of sunday of current week
 function getSunday(dateToCheck) {
-    console.log('trying to calculate sunday...');
     var sundayDate = adjustDate(dateToCheck, -dateToCheck.getDay());
-    console.log('calculated sunday date as '+sundayDate.getDate());
     return sundayDate;
 }
 
@@ -22,14 +21,30 @@ function getSunday(dateToCheck) {
 function generateCalendar(sundayDate) {
     //generate header
     saturdayDate = adjustDate(sundayDate, 6);
-    document.getElementById('calendarDateRangeHeader').innerHTML = sundayDate+' - '+saturdayDate;
+    document.getElementById('calendarDateRangeHeader').innerHTML = parseInt(sundayDate.getMonth() + 1) + '/' + sundayDate.getDate() + '/' + sundayDate.getFullYear() + ' - ' + parseInt(saturdayDate.getMonth() + 1) + '/' + saturdayDate.getDate() + '/' + saturdayDate.getFullYear();
     //generate boxes for each day
     for (var i = 0; i < 7; i++) {
         var boxDate = adjustDate(sundayDate, i).getDate();
         document.getElementById('week').innerHTML += `
-        <div class="col day-box">
-            <p>Lorem ipsum dolor sit amet,` + boxDate + ` </p>
-        </div>
+            <div class="col-md-1 col-md-1-5 day-box">
+                <a href='#' id='`+daysOfWeek[i]+`' onclick="agendaView(`+i+`)">
+                    <div class="card">
+                        <div class="row card-header">
+                            <div class="col-sm-7 day-label">
+                                `+daysOfWeek[i]+`
+                            </div>
+                            <div class="col-sm-5 date-label">
+                                `+boxDate+`
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>Lorem ipsum dolor sit amet </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
         `;
     }
 }
@@ -37,30 +52,30 @@ function generateCalendar(sundayDate) {
 //properly handles adjusting date, change is in unit of days
 function adjustDate(oldDate, change) {
     var newDate = oldDate;
-    if (change > 0) {//this block runs if change is positive
+    if (change > 0) { //this block runs if change is positive
         for (var i = 0; i < change; i++) {
-            if (newDate.getDate()+1 > maxDaysOfMonth(newDate.getMonth()+1)) {
+            if (newDate.getDate() + 1 > maxDaysOfMonth(newDate.getMonth() + 1)) {
                 //if adding a day causes the date to exceed the days of the month, set the date to the first of next month
-                newDate = new Date(newDate.getFullYear(), newDate.getMonth()+1, 1);
-            }else {
+                newDate = new Date(newDate.getFullYear(), newDate.getMonth() + 1, 1);
+            } else {
                 //add one day to the date
-                newDate = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate()+1);
+                newDate = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate() + 1);
             }
         }
-    }else if (change === 0) {
+    } else if (change === 0) {
         //if you don't adjust the date then just return the date
         return newDate;
-    }else {//this block runs if change is negative
+    } else { //this block runs if change is negative
         for (var i = 0; i < Math.abs(change); i++) {
-            if (newDate.getDate()-1 < 1) {
+            if (newDate.getDate() - 1 < 1) {
                 //if subtracting a day causes it to be less than 1, set date to last day of previous month
-                newDate = new Date(newDate.getFullYear(), newDate.getMonth()-1, maxDaysOfMonth(newDate.getMonth()));
-            }else {
+                newDate = new Date(newDate.getFullYear(), newDate.getMonth() - 1, maxDaysOfMonth(newDate.getMonth()));
+            } else {
                 //subtracts one day from the date
-                newDate = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate()-1);
+                newDate = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate() - 1);
             }
         }
-    } 
+    }
     return newDate;
 }
 
@@ -85,27 +100,28 @@ function maxDaysOfMonth(monthToCheck) {
 //Changes calendar display to next week
 function nextWeek() {
     weekIndex++;
-    var newSundayDate = getSunday(adjustDate(new Date(), weekIndex*7));//calculate the new sunday date based on the selected week
-    document.getElementById('week').innerHTML = "";//clear calendar to be regenerated
+    var newSundayDate = getSunday(adjustDate(new Date(), weekIndex * 7)); //calculate the new sunday date based on the selected week
+    document.getElementById('week').innerHTML = ""; //clear calendar to be regenerated
     generateCalendar(newSundayDate);
 }
 
 //Changes calendar display to previous week week
 function prevWeek() {
     weekIndex--;
-    var newSundayDate = getSunday(adjustDate(new Date(), weekIndex*7));//calculate the new sunday date based on the selected week
-    document.getElementById('week').innerHTML = "";//clear calendar to be regenerated
+    var newSundayDate = getSunday(adjustDate(new Date(), weekIndex * 7)); //calculate the new sunday date based on the selected week
+    document.getElementById('week').innerHTML = ""; //clear calendar to be regenerated
     generateCalendar(newSundayDate);
 
 }
 
 //switches view to day's schedule
-function agendaView() {
-
+function agendaView(day) {
+    document.getElementById('week').innerHTML = ""; //clear calendar to be regenerated
+    document.getElementById('week').innerHTML = '<p>'+daysOfWeek[day]+'</p>';
 }
 //-------------------------------
 //End of Definitions
-//---------------------------------------
+//--------------------------------------
 
 
 //----------------------------------

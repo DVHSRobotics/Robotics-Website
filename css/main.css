@@ -27,10 +27,25 @@ div.body-dark {
   padding-top: 5%; }
 
 .calendar-container {
-  padding: auto;
-  text-align: center; }
+  text-align: left; }
+  .calendar-container .card {
+    margin: 0; }
+  .calendar-container h4 {
+    text-align: center; }
   .calendar-container .day-box {
-    border: 1px solid black; }
+    padding: 8px; }
+    .calendar-container .day-box .date-label {
+      text-align: right;
+      margin-bottom: 0;
+      color: red;
+      padding: 0; }
+    .calendar-container .day-box .day-label {
+      text-align: left;
+      margin-bottom: 0;
+      color: green;
+      padding: 0; }
+    .calendar-container .day-box .card-header {
+      padding: 3px; }
 
 footer .footer-heading {
   padding: 1.5rem 0 0rem 1rem; }
@@ -55,6 +70,39 @@ footer .footer-list a {
       padding-left: 0; }
     footer .footer-subheading {
       padding-left: 0; } }
+.col-md-1-5 {
+  width: 12.5%; }
+
+.col-md-2-5 {
+  width: 20.83333%; }
+
+.col-md-3-5 {
+  width: 29.16667%; }
+
+.col-md-4-5 {
+  width: 37.5%; }
+
+.col-md-5-5 {
+  width: 45.83333%; }
+
+.col-md-6-5 {
+  width: 54.16667%; }
+
+.col-md-7-5 {
+  width: 62.5%; }
+
+.col-md-8-5 {
+  width: 70.83333%; }
+
+.col-md-9-5 {
+  width: 79.16667%; }
+
+.col-md-10-5 {
+  width: 87.5%; }
+
+.col-md-11-5 {
+  width: 95.8333%; }
+
 .carousel {
   padding: 1rem 0 1rem;
   width: 100%; }
