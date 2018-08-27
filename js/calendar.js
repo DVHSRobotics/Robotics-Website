@@ -1,26 +1,20 @@
 //------------------------------
 //Define Functions and Initial Variables
 //----------------------------------
-
-var currentDateData = new Date();//grabs date data as of loading of website
-
-
 var weekIndex = 0; //number of weeks displaced from current week (signed)
-
-
-const MILLISECONDS_IN_DAY = 86400000;
 
 //initializes calendar with current date and populates calendar 
 function calendarInit() {
+    console.log('Initializing calendar...');
     generateCalendar(getSunday(new Date()));
+    console.log('Calendar initialization complete');
 }
 
 //grabs date of sunday of current week
 function getSunday(dateToCheck) {
-    var sundayDate = dateToCheck;
-    for (var i = dateToCheck.getDay(); i > 0; i--) { //calculate the date of Sunday of the current week
-        sundayDate = adjustDate(sundayDate, -1);
-    }
+    console.log('trying to calculate sunday...');
+    var sundayDate = adjustDate(dateToCheck, -dateToCheck.getDay());
+    console.log('calculated sunday date as '+sundayDate.getDate());
     return sundayDate;
 }
 
@@ -28,7 +22,7 @@ function getSunday(dateToCheck) {
 function generateCalendar(sundayDate) {
     //generate header
     saturdayDate = adjustDate(sundayDate, 6);
-    document.getElementById('calendarDateRangeHeader').innerHTML = parseInt(sundayDate.getMonth()+1)+"/"+sundayDate.getDate()+"/"+sundayDate.getFullYear()+" - "+parseInt(saturdayDate.getMonth()+1)+"/"+saturdayDate.getDate()+"/"+saturdayDate.getFullYear()
+    document.getElementById('calendarDateRangeHeader').innerHTML = sundayDate+' - '+saturdayDate;
     //generate boxes for each day
     for (var i = 0; i < 7; i++) {
         var boxDate = adjustDate(sundayDate, i).getDate();
@@ -42,8 +36,50 @@ function generateCalendar(sundayDate) {
 
 //properly handles adjusting date, change is in unit of days
 function adjustDate(oldDate, change) {
-    newDate = new Date(parseInt(oldDate.getTime()+MILLISECONDS_IN_DAY*change));
+    var newDate = oldDate;
+    if (change > 0) {//this block runs if change is positive
+        for (var i = 0; i < change; i++) {
+            if (newDate.getDate()+1 > maxDaysOfMonth(newDate.getMonth()+1)) {
+                //if adding a day causes the date to exceed the days of the month, set the date to the first of next month
+                newDate = new Date(newDate.getFullYear(), newDate.getMonth()+1, 1);
+            }else {
+                //add one day to the date
+                newDate = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate()+1);
+            }
+        }
+    }else if (change === 0) {
+        //if you don't adjust the date then just return the date
+        return newDate;
+    }else {//this block runs if change is negative
+        for (var i = 0; i < Math.abs(change); i++) {
+            if (newDate.getDate()-1 < 1) {
+                //if subtracting a day causes it to be less than 1, set date to last day of previous month
+                newDate = new Date(newDate.getFullYear(), newDate.getMonth()-1, maxDaysOfMonth(newDate.getMonth()));
+            }else {
+                //subtracts one day from the date
+                newDate = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate()-1);
+            }
+        }
+    } 
     return newDate;
+}
+
+//returns the number of days in the month 
+function maxDaysOfMonth(monthToCheck) {
+    if ((monthToCheck <= 7 && monthToCheck % 2 === 1) || (monthToCheck >= 8 && monthToCheck % 2 === 0)) {
+        return 31;
+    } else if (monthToCheck === 2) { //special condition for February
+        //check for leap year
+        if (year % 400 === 0) {
+            return 27;
+        } else if (year % 4 === 0 && year % 100 != 0) {
+            return 28;
+        } else {
+            return 27;
+        }
+    } else {
+        return 30;
+    }
 }
 
 //Changes calendar display to next week
