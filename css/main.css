@@ -26,6 +26,12 @@ div.body-dark {
   text-align: center;
   padding-top: 5%; }
 
+.calendar-container {
+  padding: auto;
+  text-align: center; }
+  .calendar-container .day-box {
+    border: 1px solid black; }
+
 footer .footer-heading {
   padding: 1.5rem 0 0rem 1rem; }
 footer .footer-subheading {
