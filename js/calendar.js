@@ -3,10 +3,12 @@
 //----------------------------------
 var weekIndex = 0; //number of weeks displaced from current week (signed)
 var daysOfWeek = ['sun','mon','tue','wed','thu','fri','sat'];
+var blankCalendar = `<div class="col-md-1-5"></div>`//a spacing column to properly setup the calendar
 
 //initializes calendar with current date and populates calendar 
 function calendarInit() {
     console.log('Initializing calendar...');
+    document.getElementById('week').innerHTML = blankCalendar;
     generateCalendar(getSunday(new Date()));
     console.log('Calendar initialization complete');
 }
@@ -34,9 +36,7 @@ function generateCalendar(sundayDate) {
                             <div class="date-label">`+boxDate+`</div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-12">
-                                <p>Lorem ipsum dolor sit amet </p>
-                            </div>
+                            `+fillEvents()+`
                         </div>
                     </div>
                 </a>
@@ -45,52 +45,16 @@ function generateCalendar(sundayDate) {
     }
 }
 
-//properly handles adjusting date, change is in unit of days
-function adjustDate(oldDate, change) {
-    var newDate = oldDate;
-    if (change > 0) { //this block runs if change is positive
-        for (var i = 0; i < change; i++) {
-            if (newDate.getDate() + 1 > maxDaysOfMonth(newDate.getMonth() + 1)) {
-                //if adding a day causes the date to exceed the days of the month, set the date to the first of next month
-                newDate = new Date(newDate.getFullYear(), newDate.getMonth() + 1, 1);
-            } else {
-                //add one day to the date
-                newDate = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate() + 1);
-            }
-        }
-    } else if (change === 0) {
-        //if you don't adjust the date then just return the date
-        return newDate;
-    } else { //this block runs if change is negative
-        for (var i = 0; i < Math.abs(change); i++) {
-            if (newDate.getDate() - 1 < 1) {
-                //if subtracting a day causes it to be less than 1, set date to last day of previous month
-                newDate = new Date(newDate.getFullYear(), newDate.getMonth() - 1, maxDaysOfMonth(newDate.getMonth()));
-            } else {
-                //subtracts one day from the date
-                newDate = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate() - 1);
-            }
-        }
-    }
-    return newDate;
+//returns a string of HTML to render all events for the selected day
+function fillEvents() {
+    return `<div class="col-sm-12">
+                lorem ipsum bla bla bla
+            </div>`;
 }
 
-//returns the number of days in the month 
-function maxDaysOfMonth(monthToCheck) {
-    if ((monthToCheck <= 7 && monthToCheck % 2 === 1) || (monthToCheck >= 8 && monthToCheck % 2 === 0)) {
-        return 31;
-    } else if (monthToCheck === 2) { //special condition for February
-        //check for leap year
-        if (year % 400 === 0) {
-            return 27;
-        } else if (year % 4 === 0 && year % 100 != 0) {
-            return 28;
-        } else {
-            return 27;
-        }
-    } else {
-        return 30;
-    }
+//properly handles adjusting date, change is in unit of days
+function adjustDate(oldDate, change) {
+    return new Date(oldDate.getFullYear(), oldDate.getMonth(), oldDate.getDate()+change);
 }
 
 //returns the full name of the day of the week given the number of the day; ex: 1 -> Monday
@@ -125,7 +89,7 @@ function fullDayName(day) {
 function nextWeek() {
     weekIndex++;
     var newSundayDate = getSunday(adjustDate(new Date(), weekIndex * 7)); //calculate the new sunday date based on the selected week
-    document.getElementById('week').innerHTML = ""; //clear calendar to be regenerated
+    document.getElementById('week').innerHTML = blankCalendar; //clear calendar to be regenerated
     generateCalendar(newSundayDate);
 }
 
@@ -133,14 +97,14 @@ function nextWeek() {
 function prevWeek() {
     weekIndex--;
     var newSundayDate = getSunday(adjustDate(new Date(), weekIndex * 7)); //calculate the new sunday date based on the selected week
-    document.getElementById('week').innerHTML = ""; //clear calendar to be regenerated
+    document.getElementById('week').innerHTML = blankCalendar; //clear calendar to be regenerated
     generateCalendar(newSundayDate);
 
 }
 
 //switches view to day's schedule
 function agendaView(day) {
-    document.getElementById('week').innerHTML = ""; //clear calendar to be regenerated
+    document.getElementById('week').innerHTML = blankCalendar; //clear calendar to be regenerated
     document.getElementById('week').innerHTML = '<p>'+daysOfWeek[day]+'</p>';
 }
 //-------------------------------
