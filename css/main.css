@@ -32,20 +32,20 @@ div.body-dark {
     margin: 0; }
   .calendar-container h4 {
     text-align: center; }
-  .calendar-container #week .day-box {
+  .calendar-container #weeks .day-box {
     padding: 3px; }
-    .calendar-container #week .day-box .date-label {
+    .calendar-container #weeks .day-box .date-label {
       color: red;
       padding: 0;
       float: right;
       display: inline-block; }
-    .calendar-container #week .day-box .day-label {
+    .calendar-container #weeks .day-box .day-label {
       color: green;
       padding: 0;
       display: inline-block; }
-    .calendar-container #week .day-box .card-header {
+    .calendar-container #weeks .day-box .card-header {
       padding: 3px; }
-    .calendar-container #week .day-box .calendar-event {
+    .calendar-container #weeks .day-box .calendar-event {
       font-size: 1rem; }
 
 @media screen and (max-width: 1000px) {
