@@ -46,8 +46,10 @@ function generateCalendar(sundayDate) {
                             <div class="day-label">` + fullDayName(i) + `</div> 
                             <div class="date-label">` + boxDate + `</div>
                         </div>
-                        <div class="row">
+                        <div class="card-body `+hightlightToday(adjustDate(sundayDate, i))+`">
+                            <div class="row">
                             ` + fillEvents(dummyEvents, adjustDate(sundayDate, i)) + `
+                            </div>
                         </div>
                     </div>
                 </a>
@@ -58,13 +60,15 @@ function generateCalendar(sundayDate) {
 
 //returns a string of HTML to render all events for the selected day
 function fillEvents(eventsList, selectedDate) {
-    var defaultBlock = '<div class="col-sm-12"><p>Loremm ipsum blabla bla</p></div>'
+    var defaultBlock = '<div class="col-sm-12"><br><br><br></div>'//default calendar html when no events are detected
     var useDefaultBlock = true;
     var htmlBlock ="";
+    var numberOfEvents = 0;//reccords number of events on calendar
     eventsList.forEach(element => {
         var eventStartTime = new Date(element.dateTime);
-        if (eventStartTime.getFullYear() === selectedDate.getFullYear() && eventStartTime.getMonth() === selectedDate.getMonth() && eventStartTime.getDate() === selectedDate.getDate()) {
+        if (areDatesSame(eventStartTime, selectedDate)) {
             useDefaultBlock = false;
+            numberOfEvents++;
             htmlBlock += `<div class="col-sm-12">
                             `+formatTime(eventStartTime)+` `+element.title+`
                         </div>`;
@@ -75,6 +79,12 @@ function fillEvents(eventsList, selectedDate) {
     if(useDefaultBlock) {
         return defaultBlock;
     }else {
+        htmlBlock = htmlBlock.substr(0,htmlBlock.length-6);//cuts out div tag at end so whitespace can be appended
+        for(var i = 0;i<3-numberOfEvents;i++) {//fills remaining space on calendar block with whitespace
+            htmlBlock+="<br>";
+        }
+        htmlBlock+="</div>"
+        console.log(htmlBlock);
         return htmlBlock;
     }
 }
@@ -140,6 +150,24 @@ function amOrPm(hour) {
         return 'AM';
     }else {
         return 'PM';
+    }
+}
+
+//takes two dates and check if they are the same day
+function areDatesSame(dateOne, dateTwo) {
+    if(dateOne.getFullYear() === dateTwo.getFullYear() && dateOne.getMonth() === dateTwo.getMonth() && dateOne.getDate() === dateTwo.getDate()) {
+        return true;
+    }else {
+        return false;
+    }
+}
+
+//if inputed day is the same as today, return HTML to color that box on the calendar
+function hightlightToday(day) {
+    if(areDatesSame(day, currentDate)){
+        return "bg-info";//hightlights box blue
+    }else {
+        return "";
     }
 }
 
