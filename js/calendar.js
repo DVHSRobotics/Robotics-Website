@@ -39,9 +39,16 @@ function generateCalendar(sundayDate) {
     saturdayDate = adjustDate(sundayDate, 6);
     document.getElementById('calendarDateRangeHeader').innerHTML = parseInt(sundayDate.getMonth() + 1) + '/' + sundayDate.getDate() + '/' + sundayDate.getFullYear() + ' - ' + parseInt(saturdayDate.getMonth() + 1) + '/' + saturdayDate.getDate() + '/' + saturdayDate.getFullYear();
     //generate boxes for each day
-    for (var i = 0; i < 7; i++) {
+    generateNewWeek();
+    
+}
+
+function generateNewWeek() {
+    var sundayDate = adjustDate(getSunday(new Date()), weekIndex*7);
+    document.getElementById('weeks').innerHTML += `<div class="col-sm-11"><div class="row" id="week`+weekIndex+`"></div></div>`//add opening elements to new week
+    for (var i = 0; i < 7; i++) {//generate each day block for the week
         var boxDate = adjustDate(sundayDate, i).getDate();
-        document.getElementById('week').innerHTML += `
+        document.getElementById('week'+weekIndex).innerHTML += `
             <div class="col-lg-1-5 day-box">
                 <a href='#' id='` + daysOfWeek[i] + `' onclick="agendaView(` + i + `)">
                     <div class="card">
@@ -59,6 +66,7 @@ function generateCalendar(sundayDate) {
             </div>
         `;
     }
+    weekIndex++;
 }
 
 //returns a string of HTML to render all events for the selected day
