@@ -12,15 +12,18 @@ var isWeekView = true;
 var dummyEvents = [ //events for testing purposes
     {
         dateTime: "2018-08-29T06:00:00-06:00",
-        title: "Event 1"
+        title: "Event 1",
+        details: "Lorem ipsum cat dog mouse"
     },
     {
         dateTime: "2018-08-29T08:00:00-06:00",
-        title: "Event 3"
+        title: "Event 3",
+        details: "Lorem ipsum bla bla bla"
     },
     {
         dateTime: "2018-09-02T02:00:00-06:00",
-        title: "Event 2"
+        title: "Event 2",
+        details: "Lorem ipsum chocolate vanilla strawberry"
     }
 ];
 
@@ -54,7 +57,7 @@ function generateNewWeek() {
         var boxDate = adjustDate(sundayDate, i).getDate();
         document.getElementById('week' + weekIndex).innerHTML += `
             <div class="col-lg-1-5 day-box">
-                <a href='#' id='` + daysOfWeek[i] + `' onclick="agendaView(` + i + `)">
+                <a href='#' id='` + daysOfWeek[i] + `' onclick="agendaView('` + adjustDate(sundayDate, i) + `')">
                     <div class="card">
                         <div class="card-header">
                             <div class="day-label">` + daysOfWeek[i] + `</div> 
@@ -62,7 +65,7 @@ function generateNewWeek() {
                         </div>
                         <div class="card-body ` + hightlightToday(adjustDate(sundayDate, i)) + `">
                             <div class="row">
-                            ` + fillEvents(dummyEvents, adjustDate(sundayDate, i)) + `
+                            ` + fillEvents(dummyEvents, adjustDate(sundayDate, i), false) + `
                             </div>
                         </div>
                     </div>
@@ -74,7 +77,7 @@ function generateNewWeek() {
 }
 
 //returns a string of HTML to render all events for the selected day
-function fillEvents(eventsList, selectedDate) {
+function fillEvents(eventsList, selectedDate, detailed) {
     var defaultBlock = '<div class="col-sm-12"><br><br><br></div>' //default calendar html when no events are detected
     var useDefaultBlock = true;
     var htmlBlock = "";
@@ -82,11 +85,21 @@ function fillEvents(eventsList, selectedDate) {
     eventsList.forEach(element => {
         var eventStartTime = new Date(element.dateTime);
         if (areDatesSame(eventStartTime, selectedDate)) {
-            useDefaultBlock = false;
-            numberOfEvents++;
-            htmlBlock += `<div class="col-sm-12 calendar-event">
-                            ` + formatTime(eventStartTime) + ` ` + element.title + `
-                        </div>`;
+            if(detailed) {//if detailed data is requested, return event details as well
+                useDefaultBlock = false;
+                numberOfEvents++;
+                htmlBlock += `<div class="col-sm-12 calendar-event">
+                                ` + formatTime(eventStartTime) + ` ` + element.title + `
+                                <p>`+element.details+`</p>
+                            </div>`;
+            }else {
+                useDefaultBlock = false;
+                numberOfEvents++;
+                htmlBlock += `<div class="col-sm-12 calendar-event">
+                                ` + formatTime(eventStartTime) + ` ` + element.title + `
+                            </div>`;
+            }
+            
         } else {
 
         }
@@ -105,7 +118,7 @@ function fillEvents(eventsList, selectedDate) {
 
 //Changes calendar display to next week
 function nextWeek() {
-    weekIndex++;
+    //weekIndex++; IDK WHERE THE EXTRA PLUS ONE IS COMING FROM
     var newSundayDate = getSunday(adjustDate(new Date(), weekIndex * 7)); //calculate the new sunday date based on the selected week
     document.getElementById('weeks').innerHTML = ""; //clear calendar to be regenerated
     generateCalendar(newSundayDate);
@@ -209,9 +222,15 @@ function resetCalendar() {
 }
 
 //switches view to day's schedule
-function agendaView(day) {
-    document.getElementById('week').innerHTML = blankCalendar; //clear calendar to be regenerated
-    document.getElementById('week').innerHTML = '<p>' + daysOfWeek[day] + '</p>';
+function agendaView(date) {
+    date = new Date(date);//convert the string date into date object
+    document.getElementById('weeks').innerHTML = `<div class="row" id="agenda"></div>`; //clear calendar to be regenerated
+    document.getElementById('agenda').innerHTML = fillEvents(dummyEvents, date, true);//get events with details
+
+    document.getElementById('toggleCalendarView').innerHTML = 
+        `<button class="btn btn-primary btn-sm" id="toggleCalendarView" onclick="weekView()">
+            Back to Week View
+        </button>`;
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------
