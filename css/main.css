@@ -32,19 +32,18 @@ div.body-dark {
     margin: 0; }
   .calendar-container h4 {
     text-align: center; }
-  .calendar-container .day-box {
-    padding: 8px; }
-    .calendar-container .day-box .date-label {
-      text-align: right;
-      margin-bottom: 0;
+  .calendar-container #week .day-box {
+    padding: 3px; }
+    .calendar-container #week .day-box .date-label {
       color: red;
-      padding: 0; }
-    .calendar-container .day-box .day-label {
-      text-align: left;
-      margin-bottom: 0;
+      padding: 0;
+      float: right;
+      display: inline-block; }
+    .calendar-container #week .day-box .day-label {
       color: green;
-      padding: 0; }
-    .calendar-container .day-box .card-header {
+      padding: 0;
+      display: inline-block; }
+    .calendar-container #week .day-box .card-header {
       padding: 3px; }
 
 footer .footer-heading {

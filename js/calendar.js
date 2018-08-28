@@ -26,16 +26,12 @@ function generateCalendar(sundayDate) {
     for (var i = 0; i < 7; i++) {
         var boxDate = adjustDate(sundayDate, i).getDate();
         document.getElementById('week').innerHTML += `
-            <div class="col-md-1 col-md-1-5 day-box">
+            <div class="col-md-1-5 day-box">
                 <a href='#' id='`+daysOfWeek[i]+`' onclick="agendaView(`+i+`)">
                     <div class="card">
-                        <div class="row card-header">
-                            <div class="col-sm-7 day-label">
-                                `+daysOfWeek[i]+`
-                            </div>
-                            <div class="col-sm-5 date-label">
-                                `+boxDate+`
-                            </div>
+                        <div class="card-header">
+                            <div class="day-label">`+fullDayName(i)+`</div> 
+                            <div class="date-label">`+boxDate+`</div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
@@ -95,6 +91,34 @@ function maxDaysOfMonth(monthToCheck) {
     } else {
         return 30;
     }
+}
+
+//returns the full name of the day of the week given the number of the day; ex: 1 -> Monday
+function fullDayName(day) {
+    switch (day) {
+        case 0:
+        day = "Sunday";
+        break;
+        case 1:
+        day = "Monday";
+        break;
+        case 2:
+        day = "Tuesday";
+        break;
+        case 3:
+        day = "Wednesday";
+        break;
+        case 4:
+        day = "Thursday";
+        break;
+        case 5:
+        day = "Friday";
+        break;
+        case 6:
+        day = "Saturday";
+        break;
+    }
+    return day;
 }
 
 //Changes calendar display to next week
