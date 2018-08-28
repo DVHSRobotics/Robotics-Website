@@ -119,10 +119,10 @@ function formatTime(date) {
 
 //takes hour value and returns hour in twelve hour format
 function twelveHourFormat(hour) {
-    if(hour > 12) {
-        return hour-12;
+    if(hour+1 > 12) {
+        return parseInt(hour-12+1);
     }else {
-        return hour;
+        return parseInt(hour+1);
     }
 }
 
