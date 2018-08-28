@@ -1,3 +1,4 @@
+// Hopefully this code doesn't turn into ~~~~~~~~~Spaghetti~~~~~~~~~~~
 //------------------------------
 //Define Functions and Initial Variables
 //----------------------------------
@@ -5,10 +6,14 @@ var currentDate = new Date();
 var weekIndex = 0; //number of weeks displaced from current week (signed)
 var daysOfWeek = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 var blankCalendar = `<div class="col-md-1-5"></div>` //a spacing column to properly setup the calendar
-var dummyEvents = [
+var dummyEvents = [//events for testing purposes
     {
         dateTime: "2018-08-29T06:00:00-06:00",
         title: "Event 1"
+    },
+    {
+        dateTime: "2018-08-29T08:00:00-06:00",
+        title: "Event 3"
     },
     {
         dateTime: "2018-09-02T02:00:00-06:00",
@@ -84,7 +89,6 @@ function fillEvents(eventsList, selectedDate) {
             htmlBlock+="<br>";
         }
         htmlBlock+="</div>"
-        console.log(htmlBlock);
         return htmlBlock;
     }
 }
