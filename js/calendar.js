@@ -1,9 +1,20 @@
 //------------------------------
 //Define Functions and Initial Variables
 //----------------------------------
+var currentDate = new Date();
 var weekIndex = 0; //number of weeks displaced from current week (signed)
-var daysOfWeek = ['sun','mon','tue','wed','thu','fri','sat'];
-var blankCalendar = `<div class="col-md-1-5"></div>`//a spacing column to properly setup the calendar
+var daysOfWeek = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+var blankCalendar = `<div class="col-md-1-5"></div>` //a spacing column to properly setup the calendar
+var dummyEvents = [
+    {
+        dateTime: "2018-08-29T06:00:00-06:00",
+        title: "Event 1"
+    },
+    {
+        dateTime: "2018-09-02T02:00:00-06:00",
+        title: "Event 2"
+    }
+];
 
 //initializes calendar with current date and populates calendar 
 function calendarInit() {
@@ -29,14 +40,14 @@ function generateCalendar(sundayDate) {
         var boxDate = adjustDate(sundayDate, i).getDate();
         document.getElementById('week').innerHTML += `
             <div class="col-md-1-5 day-box">
-                <a href='#' id='`+daysOfWeek[i]+`' onclick="agendaView(`+i+`)">
+                <a href='#' id='` + daysOfWeek[i] + `' onclick="agendaView(` + i + `)">
                     <div class="card">
                         <div class="card-header">
-                            <div class="day-label">`+fullDayName(i)+`</div> 
-                            <div class="date-label">`+boxDate+`</div>
+                            <div class="day-label">` + fullDayName(i) + `</div> 
+                            <div class="date-label">` + boxDate + `</div>
                         </div>
                         <div class="row">
-                            `+fillEvents()+`
+                            ` + fillEvents(dummyEvents, adjustDate(sundayDate, i)) + `
                         </div>
                     </div>
                 </a>
@@ -46,43 +57,90 @@ function generateCalendar(sundayDate) {
 }
 
 //returns a string of HTML to render all events for the selected day
-function fillEvents() {
-    return `<div class="col-sm-12">
-                lorem ipsum bla bla bla
-            </div>`;
+function fillEvents(eventsList, selectedDate) {
+    var defaultBlock = '<div class="col-sm-12"><p>Loremm ipsum blabla bla</p></div>'
+    var useDefaultBlock = true;
+    var htmlBlock ="";
+    eventsList.forEach(element => {
+        var eventStartTime = new Date(element.dateTime);
+        if (eventStartTime.getFullYear() === selectedDate.getFullYear() && eventStartTime.getMonth() === selectedDate.getMonth() && eventStartTime.getDate() === selectedDate.getDate()) {
+            useDefaultBlock = false;
+            htmlBlock += `<div class="col-sm-12">
+                            `+formatTime(eventStartTime)+` `+element.title+`
+                        </div>`;
+        } else {
+
+        }
+    });
+    if(useDefaultBlock) {
+        return defaultBlock;
+    }else {
+        return htmlBlock;
+    }
 }
 
 //properly handles adjusting date, change is in unit of days
 function adjustDate(oldDate, change) {
-    return new Date(oldDate.getFullYear(), oldDate.getMonth(), oldDate.getDate()+change);
+    return new Date(oldDate.getFullYear(), oldDate.getMonth(), oldDate.getDate() + change);
 }
 
 //returns the full name of the day of the week given the number of the day; ex: 1 -> Monday
 function fullDayName(day) {
     switch (day) {
         case 0:
-        day = "Sunday";
-        break;
+            day = "Sunday";
+            break;
         case 1:
-        day = "Monday";
-        break;
+            day = "Monday";
+            break;
         case 2:
-        day = "Tuesday";
-        break;
+            day = "Tuesday";
+            break;
         case 3:
-        day = "Wednesday";
-        break;
+            day = "Wednesday";
+            break;
         case 4:
-        day = "Thursday";
-        break;
+            day = "Thursday";
+            break;
         case 5:
-        day = "Friday";
-        break;
+            day = "Friday";
+            break;
         case 6:
-        day = "Saturday";
-        break;
+            day = "Saturday";
+            break;
     }
     return day;
+}
+
+//takes date object and returns time in AM/PM notation
+function formatTime(date) {
+    return twelveHourFormat(date.getHours())+":"+formatMinutes(date.getMinutes())+amOrPm(date.getHours());
+}
+
+//takes hour value and returns hour in twelve hour format
+function twelveHourFormat(hour) {
+    if(hour > 12) {
+        return hour-12;
+    }else {
+        return hour;
+    }
+}
+
+//takes minutes, if 0, returns "00"
+function formatMinutes(minutes) {
+    if(minutes===0){
+        return "00";
+    }else {
+        return minutes;
+    }
+}
+
+function amOrPm(hour) {
+    if (hour<12) {
+        return 'AM';
+    }else {
+        return 'PM';
+    }
 }
 
 //Changes calendar display to next week
@@ -105,7 +163,7 @@ function prevWeek() {
 //switches view to day's schedule
 function agendaView(day) {
     document.getElementById('week').innerHTML = blankCalendar; //clear calendar to be regenerated
-    document.getElementById('week').innerHTML = '<p>'+daysOfWeek[day]+'</p>';
+    document.getElementById('week').innerHTML = '<p>' + daysOfWeek[day] + '</p>';
 }
 //-------------------------------
 //End of Definitions
@@ -118,6 +176,11 @@ function agendaView(day) {
 
 calendarInit();
 
+
+//gAPI date format
+// EventList.items[i].start.dateTime;
+//can be directly used as date object
+//console.log(new Date("2012-07-11T03:30:00-06:00"));
 
 //starts calendar api request -- Relies on API key which will probably be non-functional when using service account/oauth
 // function start() {
