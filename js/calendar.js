@@ -169,6 +169,31 @@ function monthView() {
 
 }
 
+function weekView() {
+    //Set calendar to first week of currently selected month
+    document.getElementById('weeks').innerHTML = ""; //clear calendar to be regenerated
+    var currentMonth = currentDate.getMonth()+monthIndex;
+    var startOfMonth = new Date(currentDate.getFullYear(), currentMonth, 1);
+    var firstWeekIndex = weekIndexDifference(currentDate, startOfMonth);
+    weekIndex = firstWeekIndex;
+    generateCalendar(getSunday(startOfMonth));
+
+    //Adjust calendar controls for week view
+    document.getElementById('toggleCalendarView').innerHTML = 
+        `<button class="btn btn-primary btn-sm" onclick="monthView()">
+            Month View
+        </button>`;
+    document.getElementById('calendarNavPrevButton').innerHTML = 
+        `<button class="btn btn-primary btn-sm" onclick="prevWeek()">
+            <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
+        </button>`;
+    document.getElementById('calendarNavNextButton').innerHTML = 
+    `<button class="btn btn-primary btn-sm" onclick="nextWeek()">
+        <i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i>
+    </button>`;
+
+}
+
 function resetCalendar() {
     document.getElementById('weeks').innerHTML = `<div class="col-sm-11"><div class="row" id="week` + weekIndex + `"><div class="col-md-1-5"></div></div></div>`;
 }
