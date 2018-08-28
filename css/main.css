@@ -127,6 +127,13 @@ footer .footer-list a {
     .carousel .carousel-control-next:hover i {
       text-shadow: 0px 0px 4px white; }
 
+@media screen and (max-width: 600px) {
+  .carousel .carousel-control-next .carousel-control-next-icon {
+    position: relative;
+    left: -1.5rem; }
+  .carousel .carousel-control-prev .carousel-control-prev-icon {
+    position: relative;
+    right: -1.5rem; } }
 .jumbotron {
   background-color: #666;
   margin: 0; }
@@ -141,6 +148,9 @@ footer .footer-list a {
         .jumbotron .container button.btn-rounded a:hover {
           color: black; }
 
+@media screen and (max-width: 600px) {
+  p {
+    font-size: .85rem !important; } }
 .name-box {
   text-align: center;
   line-height: 1.5rem;

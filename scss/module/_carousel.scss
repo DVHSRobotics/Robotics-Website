@@ -35,3 +35,20 @@
         }
     }
 }
+
+@media screen and (max-width: 600px) {
+    .carousel {
+        .carousel-control-next {
+            .carousel-control-next-icon {
+                position: relative;
+                left: -1.5rem;
+            }
+        }
+        .carousel-control-prev {
+            .carousel-control-prev-icon {
+                position: relative;
+                right: -1.5rem;
+            }
+        }
+    }
+}
