@@ -268,7 +268,7 @@ function areDatesSame(dateOne, dateTwo) {
 //if inputed day is the same as today, return HTML to color that box on the calendar
 function hightlightToday(day) {
     if (areDatesSame(day, currentDate)) {
-        return "bg-info"; //hightlights box blue
+        return `" style="background-color: #ffd500;`; //hightlights box yellowish orange
     } else {
         return "";
     }
