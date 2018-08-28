@@ -118,8 +118,19 @@ function prevWeek() {
 function monthView() {
     var sundayDate = getSunday(adjustDate(currentDate, weekIndex*7));
     var saturdayDate = adjustDate(sundayDate, 6);
-
-    generateNewWeek();
+    var endOfMonth;
+    if(saturdayDate.getMonth() > sundayDate.getMonth()){
+        //if current week extends to next month, set end date to end of next month
+        endOfMonth = new Date(saturdayDate.getFullYear(), saturdayDate.getMonth(), maxDaysOfMonth(parseInt(saturdayDate.getMonth()+1)));
+    }else {
+        //else set end of month to end of current month
+        endOfMonth = new Date(sundayDate.getFullYear(), sundayDate.getMonth(), maxDaysOfMonth(sundayDate.getMonth()+1));
+    }
+    var finalWeekIndex = weekIndex+weekIndexDifference(sundayDate, endOfMonth);
+    for(var i = weekIndex; i <= finalWeekIndex; i++){
+        generateNewWeek();
+    }
+    
 }
 
 //switches view to day's schedule
@@ -218,6 +229,32 @@ function hightlightToday(day) {
     }else {
         return "";
     }
+}
+
+//returns the number of days in the month 
+function maxDaysOfMonth(monthToCheck) {
+    if ((monthToCheck <= 7 && monthToCheck % 2 === 1) || (monthToCheck >= 8 && monthToCheck % 2 === 0)) {
+        return 31;
+    } else if (monthToCheck === 2) { //special condition for February
+        //check for leap year
+        if (year % 400 === 0) {
+            return 27;
+        } else if (year % 4 === 0 && year % 100 != 0) {
+            return 28;
+        } else {
+            return 27;
+        }
+    } else {
+        return 30;
+    }
+}
+
+function weekIndexDifference(firstDate, lastDate) {
+    var milliSecondsPerWeek = 604800000;
+    firstDate = getSunday(firstDate);
+    lastDate = getSunday(lastDate);
+    var timeDifference = lastDate.getTime() - firstDate.getTime();
+    return timeDifference / milliSecondsPerWeek;
 }
 
 
