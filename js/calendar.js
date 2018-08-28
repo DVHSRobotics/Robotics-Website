@@ -21,18 +21,16 @@ var dummyEvents = [//events for testing purposes
     }
 ];
 
+//-------------------------------------------------------------------------------------------------------------------------------------------
+//Calendar generation functions
+//-------------------------------------------------------------------------------------------------------------------------------------------
+
 //initializes calendar with current date and populates calendar 
 function calendarInit() {
     console.log('Initializing calendar...');
     document.getElementById('week').innerHTML = blankCalendar;
     generateCalendar(getSunday(new Date()));
     console.log('Calendar initialization complete');
-}
-
-//grabs date of sunday of current week
-function getSunday(dateToCheck) {
-    var sundayDate = adjustDate(dateToCheck, -dateToCheck.getDay());
-    return sundayDate;
 }
 
 //generates each of the boxes for each day of the week
@@ -91,6 +89,43 @@ function fillEvents(eventsList, selectedDate) {
         htmlBlock+="</div>"
         return htmlBlock;
     }
+}
+
+//Changes calendar display to next week
+function nextWeek() {
+    weekIndex++;
+    var newSundayDate = getSunday(adjustDate(new Date(), weekIndex * 7)); //calculate the new sunday date based on the selected week
+    document.getElementById('week').innerHTML = blankCalendar; //clear calendar to be regenerated
+    generateCalendar(newSundayDate);
+}
+
+//Changes calendar display to previous week week
+function prevWeek() {
+    weekIndex--;
+    var newSundayDate = getSunday(adjustDate(new Date(), weekIndex * 7)); //calculate the new sunday date based on the selected week
+    document.getElementById('week').innerHTML = blankCalendar; //clear calendar to be regenerated
+    generateCalendar(newSundayDate);
+
+}
+
+function monthView() {
+    generateNewWeek();
+}
+
+//switches view to day's schedule
+function agendaView(day) {
+    document.getElementById('week').innerHTML = blankCalendar; //clear calendar to be regenerated
+    document.getElementById('week').innerHTML = '<p>' + daysOfWeek[day] + '</p>';
+}
+
+//-------------------------------------------------------------------------------------------------------------------------------------------
+//Date manipulation functions
+//-------------------------------------------------------------------------------------------------------------------------------------------
+
+//grabs date of sunday of current week
+function getSunday(dateToCheck) {
+    var sundayDate = adjustDate(dateToCheck, -dateToCheck.getDay());
+    return sundayDate;
 }
 
 //properly handles adjusting date, change is in unit of days
@@ -175,28 +210,7 @@ function hightlightToday(day) {
     }
 }
 
-//Changes calendar display to next week
-function nextWeek() {
-    weekIndex++;
-    var newSundayDate = getSunday(adjustDate(new Date(), weekIndex * 7)); //calculate the new sunday date based on the selected week
-    document.getElementById('week').innerHTML = blankCalendar; //clear calendar to be regenerated
-    generateCalendar(newSundayDate);
-}
 
-//Changes calendar display to previous week week
-function prevWeek() {
-    weekIndex--;
-    var newSundayDate = getSunday(adjustDate(new Date(), weekIndex * 7)); //calculate the new sunday date based on the selected week
-    document.getElementById('week').innerHTML = blankCalendar; //clear calendar to be regenerated
-    generateCalendar(newSundayDate);
-
-}
-
-//switches view to day's schedule
-function agendaView(day) {
-    document.getElementById('week').innerHTML = blankCalendar; //clear calendar to be regenerated
-    document.getElementById('week').innerHTML = '<p>' + daysOfWeek[day] + '</p>';
-}
 //-------------------------------
 //End of Definitions
 //--------------------------------------
