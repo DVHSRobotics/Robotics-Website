@@ -41,7 +41,6 @@ function generateCalendar(sundayDate) {
     saturdayDate = adjustDate(sundayDate, 6);
     document.getElementById('calendarDateRangeHeader').innerHTML = parseInt(sundayDate.getMonth() + 1) + '/' + sundayDate.getDate() + '/' + sundayDate.getFullYear() + ' - ' + parseInt(saturdayDate.getMonth() + 1) + '/' + saturdayDate.getDate() + '/' + saturdayDate.getFullYear();
     //generate boxes for each day
-    weekIndex = weekIndexDifference(currentDate, sundayDate);
     generateNewWeek();
 
 }
@@ -112,7 +111,7 @@ function nextWeek() {
 
 //Changes calendar display to previous week
 function prevWeek() {
-    weekIndex--;
+    weekIndex-=2;//for some reason decrementing by 2 is necessary to decrement by one
     var newSundayDate = getSunday(adjustDate(new Date(), weekIndex * 7)); //calculate the new sunday date based on the selected week
     document.getElementById('weeks').innerHTML = ""; //clear calendar to be regenerated
     generateCalendar(newSundayDate);
@@ -121,12 +120,14 @@ function prevWeek() {
 
 //changes calendar to display next month
 function nextMonth() {
-
+    monthIndex++;
+    monthView();
 }
 
 //changes calendar to display previous month
 function prevMonth() {
-
+    monthIndex--;
+    monthView();
 }
 
 function monthView() {
@@ -147,7 +148,20 @@ function monthView() {
     document.getElementById('calendarDateRangeHeader').innerHTML = monthFullName(startOfMonth.getMonth()+1);
 
     //Adjust calendar controls to month view
+    document.getElementById('toggleCalendarView').innerHTML = 
+        `<button class="btn btn-primary btn-sm" onclick="weekView()">
+            Week View
+        </button>`;
+    document.getElementById('calendarNavPrevButton').innerHTML = 
+        `<button class="btn btn-primary btn-sm" onclick="prevMonth()">
+            <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
+        </button>`;
+    document.getElementById('calendarNavNextButton').innerHTML = 
+    `<button class="btn btn-primary btn-sm" onclick="nextMonth()">
+        <i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i>
+    </button>`;
 
+    
     //generate each week of the month
     for (var i = firstWeekIndex; i <= lastWeekIndex; i++) {
         generateNewWeek();
