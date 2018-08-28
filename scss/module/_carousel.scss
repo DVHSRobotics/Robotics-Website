@@ -1,11 +1,37 @@
 .carousel {
-    padding: 1rem 0 1rem;
+    //padding: 1rem 0 1rem;
     width: 100%;
     .carousel-inner {
         .carousel-item {
-            img{
-
+            img {}
+        }
+    }
+    .carousel-control-prev {
+        .carousel-control-prev-icon {
+            i {
+                position: relative;
+                right: 2rem;
             }
+        }
+        &:hover {
+            i {
+                text-shadow: 0px 0px 4px white;
+            }
+            background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+        }
+    }
+    .carousel-control-next {
+        .carousel-control-next-icon {
+            i {
+                position: relative;
+                left: 2rem;
+            }
+        }
+        &:hover {
+            i {
+                text-shadow: 0px 0px 4px white;
+            }
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
         }
     }
 }

@@ -45,6 +45,8 @@ div.body-dark {
       display: inline-block; }
     .calendar-container #week .day-box .card-header {
       padding: 3px; }
+    .calendar-container #week .day-box .calendar-event {
+      font-size: 1rem; }
 
 @media screen and (max-width: 1000px) {
   .day-box {
@@ -109,8 +111,21 @@ footer .footer-list a {
   width: 12.5%; }
 
 .carousel {
-  padding: 1rem 0 1rem;
   width: 100%; }
+  .carousel .carousel-control-prev .carousel-control-prev-icon i {
+    position: relative;
+    right: 2rem; }
+  .carousel .carousel-control-prev:hover {
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)); }
+    .carousel .carousel-control-prev:hover i {
+      text-shadow: 0px 0px 4px white; }
+  .carousel .carousel-control-next .carousel-control-next-icon i {
+    position: relative;
+    left: 2rem; }
+  .carousel .carousel-control-next:hover {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)); }
+    .carousel .carousel-control-next:hover i {
+      text-shadow: 0px 0px 4px white; }
 
 .jumbotron {
   background-color: #666;

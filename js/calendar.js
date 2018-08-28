@@ -74,7 +74,7 @@ function fillEvents(eventsList, selectedDate) {
         if (areDatesSame(eventStartTime, selectedDate)) {
             useDefaultBlock = false;
             numberOfEvents++;
-            htmlBlock += `<div class="col-sm-12">
+            htmlBlock += `<div class="col-sm-12 calendar-event">
                             `+formatTime(eventStartTime)+` `+element.title+`
                         </div>`;
         } else {
