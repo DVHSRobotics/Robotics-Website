@@ -28,7 +28,6 @@ var dummyEvents = [//events for testing purposes
 //initializes calendar with current date and populates calendar 
 function calendarInit() {
     console.log('Initializing calendar...');
-    document.getElementById('week').innerHTML = blankCalendar;
     generateCalendar(getSunday(new Date()));
     console.log('Calendar initialization complete');
 }
@@ -45,7 +44,7 @@ function generateCalendar(sundayDate) {
 
 function generateNewWeek() {
     var sundayDate = adjustDate(getSunday(new Date()), weekIndex*7);
-    document.getElementById('weeks').innerHTML += `<div class="col-sm-11"><div class="row" id="week`+weekIndex+`"></div></div>`//add opening elements to new week
+    document.getElementById('weeks').innerHTML += `<div class="col-sm-11"><div class="row" id="week`+weekIndex+`"><div class="col-md-1-5"></div></div></div>`//add opening elements to new week
     for (var i = 0; i < 7; i++) {//generate each day block for the week
         var boxDate = adjustDate(sundayDate, i).getDate();
         document.getElementById('week'+weekIndex).innerHTML += `
@@ -117,6 +116,9 @@ function prevWeek() {
 }
 
 function monthView() {
+    var sundayDate = getSunday(adjustDate(currentDate, weekIndex*7));
+    var saturdayDate = adjustDate(sundayDate, 6);
+
     generateNewWeek();
 }
 
