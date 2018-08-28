@@ -7,6 +7,8 @@ var weekIndex = 0; //number of weeks displaced from current week (signed). Used 
 var monthIndex = 0; //number of months displaced from current month (signed)
 var daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 var blankCalendar = `<div class="col-md-1-5"></div>` //a spacing column to properly setup the calendar
+var isMobileView = false;
+var isWeekView = true;
 var dummyEvents = [ //events for testing purposes
     {
         dateTime: "2018-08-29T06:00:00-06:00",
@@ -131,6 +133,7 @@ function prevMonth() {
 }
 
 function monthView() {
+    isWeekView = false;
     var currentMonth = currentDate.getMonth()+monthIndex;
     var sundayDate = getSunday(adjustDate(currentDate, weekIndex * 7));
     var saturdayDate = adjustDate(sundayDate, 6);//the date of saturday of the same week as the sunday date
@@ -170,27 +173,34 @@ function monthView() {
 }
 
 function weekView() {
-    //Set calendar to first week of currently selected month
     document.getElementById('weeks').innerHTML = ""; //clear calendar to be regenerated
-    var currentMonth = currentDate.getMonth()+monthIndex;
-    var startOfMonth = new Date(currentDate.getFullYear(), currentMonth, 1);
-    var firstWeekIndex = weekIndexDifference(currentDate, startOfMonth);
-    weekIndex = firstWeekIndex;
-    generateCalendar(getSunday(startOfMonth));
-
+    if(isWeekView) {//if already in week view (like user is just adjusting to mobile viewport) maintain current week index
+        weekIndex--;//not sure why i have to decrement this but it works
+        generateCalendar(getSunday(adjustDate(new Date(), (weekIndex) * 7)));
+    }else {
+        //Set calendar to first week of currently selected month
+        var currentMonth = currentDate.getMonth()+monthIndex;
+        var startOfMonth = new Date(currentDate.getFullYear(), currentMonth, 1);
+        var firstWeekIndex = weekIndexDifference(currentDate, startOfMonth);
+        weekIndex = firstWeekIndex;
+        generateCalendar(getSunday(startOfMonth));
+    }
+    
     //Adjust calendar controls for week view
     document.getElementById('toggleCalendarView').innerHTML = 
-        `<button class="btn btn-primary btn-sm" onclick="monthView()">
+        `<button class="btn btn-primary btn-sm" id="toggleCalendarView" onclick="monthView()">
             Month View
         </button>`;
     document.getElementById('calendarNavPrevButton').innerHTML = 
-        `<button class="btn btn-primary btn-sm" onclick="prevWeek()">
+        `<button class="btn btn-primary btn-sm" id="calendarNavPrevButton" onclick="prevWeek()">
             <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
         </button>`;
     document.getElementById('calendarNavNextButton').innerHTML = 
-    `<button class="btn btn-primary btn-sm" onclick="nextWeek()">
+    `<button class="btn btn-primary btn-sm" id="calendarNavNextButton" onclick="nextWeek()">
         <i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i>
     </button>`;
+
+    isWeekView = true;
 
 }
 
@@ -422,6 +432,30 @@ function weekIndexDifference(firstDate, lastDate) {
 
 calendarInit();
 
+
+//Listener for calendar mobile view
+//-------------------------------------------------------------------------------------------------
+function calendarMobileView(x) {
+    if (x.matches && !isMobileView) { // If media query matches and previously not in mobile view
+        isMobileView = true;
+        weekView();
+        document.getElementById('toggleCalendarView').innerHTML = "";//remove ability to toggle to month view for mobile users
+    } else if (!x.matches){
+        //if screen is not a mobile viewport give back desktop controls
+        isMobileView = false;
+        document.getElementById('toggleCalendarView').innerHTML = 
+        `<button class="btn btn-primary btn-sm" onclick="monthView()">
+            Month View
+        </button>`;
+    } else {
+        //if already in mobile view, do nothing
+    } 
+}
+
+var screenSizeQuery = window.matchMedia("(max-width: 1000px)")
+calendarMobileView(screenSizeQuery) // Call listener function at run time
+screenSizeQuery.addListener(calendarMobileView) // Attach listener function on state changes
+//-------------------------------------------------------------------------------------------------
 
 //gAPI date format
 // EventList.items[i].start.dateTime;
