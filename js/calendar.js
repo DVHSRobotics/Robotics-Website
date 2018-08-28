@@ -3,7 +3,8 @@
 //Define Functions and Initial Variables
 //----------------------------------
 var currentDate = new Date();
-var weekIndex = 0; //number of weeks displaced from current week (signed)
+var weekIndex = 0; //number of weeks displaced from current week (signed). Used as the index for the generateNewWeek() function
+var monthIndex = 0; //number of months displaced from current month (signed)
 var daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 var blankCalendar = `<div class="col-md-1-5"></div>` //a spacing column to properly setup the calendar
 var dummyEvents = [ //events for testing purposes
@@ -24,6 +25,8 @@ var dummyEvents = [ //events for testing purposes
 //-------------------------------------------------------------------------------------------------------------------------------------------
 //Calendar generation functions
 //-------------------------------------------------------------------------------------------------------------------------------------------
+//Some notes about calendar generation :
+//  Be cautious of whetehr the functions require the sunday date of the week to properly handle the dates
 
 //initializes calendar with current date and populates calendar 
 function calendarInit() {
@@ -38,6 +41,7 @@ function generateCalendar(sundayDate) {
     saturdayDate = adjustDate(sundayDate, 6);
     document.getElementById('calendarDateRangeHeader').innerHTML = parseInt(sundayDate.getMonth() + 1) + '/' + sundayDate.getDate() + '/' + sundayDate.getFullYear() + ' - ' + parseInt(saturdayDate.getMonth() + 1) + '/' + saturdayDate.getDate() + '/' + saturdayDate.getFullYear();
     //generate boxes for each day
+    weekIndex = weekIndexDifference(currentDate, sundayDate);
     generateNewWeek();
 
 }
@@ -102,35 +106,57 @@ function fillEvents(eventsList, selectedDate) {
 function nextWeek() {
     weekIndex++;
     var newSundayDate = getSunday(adjustDate(new Date(), weekIndex * 7)); //calculate the new sunday date based on the selected week
-    document.getElementById('week').innerHTML = blankCalendar; //clear calendar to be regenerated
+    document.getElementById('weeks').innerHTML = ""; //clear calendar to be regenerated
     generateCalendar(newSundayDate);
 }
 
-//Changes calendar display to previous week week
+//Changes calendar display to previous week
 function prevWeek() {
     weekIndex--;
     var newSundayDate = getSunday(adjustDate(new Date(), weekIndex * 7)); //calculate the new sunday date based on the selected week
-    document.getElementById('week').innerHTML = blankCalendar; //clear calendar to be regenerated
+    document.getElementById('weeks').innerHTML = ""; //clear calendar to be regenerated
     generateCalendar(newSundayDate);
+
+}
+
+//changes calendar to display next month
+function nextMonth() {
+
+}
+
+//changes calendar to display previous month
+function prevMonth() {
 
 }
 
 function monthView() {
+    var currentMonth = currentDate.getMonth()+monthIndex;
     var sundayDate = getSunday(adjustDate(currentDate, weekIndex * 7));
-    var saturdayDate = adjustDate(sundayDate, 6);
-    var endOfMonth;
-    if (saturdayDate.getMonth() > sundayDate.getMonth()) {
-        //if current week extends to next month, set end date to end of next month
-        endOfMonth = new Date(saturdayDate.getFullYear(), saturdayDate.getMonth(), maxDaysOfMonth(parseInt(saturdayDate.getMonth() + 1)));
-    } else {
-        //else set end of month to end of current month
-        endOfMonth = new Date(sundayDate.getFullYear(), sundayDate.getMonth(), maxDaysOfMonth(sundayDate.getMonth() + 1));
-    }
-    var finalWeekIndex = weekIndex + weekIndexDifference(sundayDate, endOfMonth);
-    for (var i = weekIndex; i <= finalWeekIndex; i++) {
+    var saturdayDate = adjustDate(sundayDate, 6);//the date of saturday of the same week as the sunday date
+    var startOfMonth = new Date(currentDate.getFullYear(), currentMonth, 1);//set sstart of month to 1st of selected month
+    console.log(startOfMonth);
+    var endOfMonth = new Date(currentDate.getFullYear(), startOfMonth.getMonth(), maxDaysOfMonth(startOfMonth.getMonth()));//end of month is the same month as defined in the startOfMonth
+
+    var firstWeekIndex = weekIndexDifference(currentDate, startOfMonth);
+    var lastWeekIndex = weekIndexDifference(currentDate, endOfMonth);
+
+    //set weekIndex to first week of the month and reset calendar
+    weekIndex = firstWeekIndex;
+    resetCalendar();
+    //set calendar header to month name
+    document.getElementById('calendarDateRangeHeader').innerHTML = monthFullName(startOfMonth.getMonth()+1);
+
+    //Adjust calendar controls to month view
+
+    //generate each week of the month
+    for (var i = firstWeekIndex; i <= lastWeekIndex; i++) {
         generateNewWeek();
     }
 
+}
+
+function resetCalendar() {
+    document.getElementById('weeks').innerHTML = `<div class="col-sm-11"><div class="row" id="week` + weekIndex + `"><div class="col-md-1-5"></div></div></div>`;
 }
 
 //switches view to day's schedule
@@ -146,6 +172,7 @@ function agendaView(day) {
 //grabs date of sunday of current week
 function getSunday(dateToCheck) {
     var sundayDate = adjustDate(dateToCheck, -dateToCheck.getDay());
+    var sundayDate = new Date(sundayDate.getFullYear(),sundayDate.getMonth(), sundayDate.getDate());
     return sundayDate;
 }
 
@@ -225,6 +252,49 @@ function monthShortName(month) {
 
 }
 
+function monthFullName(month) {
+    switch (month) {
+        case 1:
+            month = "January"
+            break;
+        case 2:
+            month = "February"
+            break;
+        case 3:
+            month = "March"
+            break;
+        case 4:
+            month = "April"
+            break;
+        case 5:
+            month = "May"
+            break;
+        case 6:
+            month = "June"
+            break;
+        case 7:
+            month = "July"
+            break;
+        case 8:
+            month = "August"
+            break;
+        case 9:
+            month = "September"
+            break;
+        case 10:
+            month = "October"
+            break;
+        case 11:
+            month = "November"
+            break;
+        case 12:
+            month = "December"
+            break;
+    }
+    return month;
+
+}
+
 //takes date object and returns time in AM/PM notation
 function formatTime(date) {
     return twelveHourFormat(date.getHours()) + ":" + formatMinutes(date.getMinutes()) + amOrPm(date.getHours());
@@ -292,6 +362,7 @@ function maxDaysOfMonth(monthToCheck) {
     }
 }
 
+//takes two dates and finds the difference in the number of weeks between the Sunday's of those dates
 function weekIndexDifference(firstDate, lastDate) {
     var milliSecondsPerWeek = 604800000;
     firstDate = getSunday(firstDate);
