@@ -151,7 +151,6 @@ function monthView() {
     var sundayDate = getSunday(adjustDate(currentDate, weekIndex * 7));
     var saturdayDate = adjustDate(sundayDate, 6);//the date of saturday of the same week as the sunday date
     var startOfMonth = new Date(currentDate.getFullYear(), currentMonth, 1);//set sstart of month to 1st of selected month
-    console.log(startOfMonth);
     var endOfMonth = new Date(currentDate.getFullYear(), startOfMonth.getMonth(), maxDaysOfMonth(startOfMonth.getMonth()));//end of month is the same month as defined in the startOfMonth
 
     var firstWeekIndex = weekIndexDifference(currentDate, startOfMonth);

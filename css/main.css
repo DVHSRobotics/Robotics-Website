@@ -27,26 +27,39 @@ div.body-dark {
   padding-top: 5%; }
 
 .calendar-container {
-  text-align: left; }
+  text-align: center; }
   .calendar-container .card {
     margin: 0; }
-  .calendar-container h4 {
-    text-align: center; }
-  .calendar-container #weeks .day-box {
-    padding: 3px; }
-    .calendar-container #weeks .day-box .date-label {
-      color: red;
-      padding: 0;
-      float: right;
-      display: inline-block; }
-    .calendar-container #weeks .day-box .day-label {
-      color: green;
-      padding: 0;
-      display: inline-block; }
-    .calendar-container #weeks .day-box .card-header {
+  .calendar-container h5 {
+    text-align: center;
+    display: inline-block; }
+  .calendar-container #weeks {
+    text-align: left; }
+    .calendar-container #weeks .day-box {
       padding: 3px; }
-    .calendar-container #weeks .day-box .calendar-event {
-      font-size: 1rem; }
+      .calendar-container #weeks .day-box .date-label {
+        color: red;
+        padding: 0;
+        float: right;
+        display: inline-block; }
+      .calendar-container #weeks .day-box .day-label {
+        color: green;
+        padding: 0;
+        display: inline-block; }
+      .calendar-container #weeks .day-box .card-header {
+        padding: 3px; }
+      .calendar-container #weeks .day-box .calendar-event {
+        font-size: 1rem; }
+  .calendar-container #calendarNavNextButton {
+    text-align: center;
+    display: inline-block;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem; }
+  .calendar-container #calendarNavPrevButton {
+    text-align: center;
+    display: inline-block;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem; }
 
 @media screen and (max-width: 1000px) {
   .day-box {
@@ -109,6 +122,9 @@ footer .footer-list a {
 
 .col-lg-1-5 {
   width: 12.5%; }
+
+.col-sm-2-5 {
+  width: 20.83333%; }
 
 .carousel {
   width: 100%; }

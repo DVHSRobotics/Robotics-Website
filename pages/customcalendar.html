@@ -61,22 +61,22 @@
     <div class="container-fluid body-light calendar-container">
         <br>
         <div class="row">
-            <div class="col-sm-2" id="calendarNavPrevButton">
-                <button class="btn btn-primary btn-sm" onclick="prevWeek()">
-                    <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
-                </button>
-            </div>
-            <div class="col-sm-8">
-                <h4 id="calendarDateRangeHeader">Date Range Header</h4>
-            </div>
-            <div class="col-sm-2" id="calendarNavNextButton">
-                <button class="btn btn-primary btn-sm" onclick="nextWeek()">
-                    <i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i>
-                </button>
+            <div class="col-sm-12">
+                <div id="calendarNavPrevButton">
+                    <button class="btn btn-primary btn-sm" onclick="prevWeek()">
+                        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <h5 id="calendarDateRangeHeader">Date Range Header</h5>
+                <div id="calendarNavNextButton">
+                    <button class="btn btn-primary btn-sm" onclick="nextWeek()">
+                        <i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i>
+                    </button>
+                </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 offset-5" id="toggleCalendarView">
+            <div class="col-sm-12" id="toggleCalendarView">
                 <button class="btn btn-primary btn-sm" onclick="monthView()">
                     Month View
                 </button>
