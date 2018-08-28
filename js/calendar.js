@@ -39,7 +39,7 @@ function generateCalendar(sundayDate) {
     for (var i = 0; i < 7; i++) {
         var boxDate = adjustDate(sundayDate, i).getDate();
         document.getElementById('week').innerHTML += `
-            <div class="col-md-1-5 day-box">
+            <div class="col-lg-1-5 day-box">
                 <a href='#' id='` + daysOfWeek[i] + `' onclick="agendaView(` + i + `)">
                     <div class="card">
                         <div class="card-header">

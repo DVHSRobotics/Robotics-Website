@@ -46,6 +46,9 @@ div.body-dark {
     .calendar-container #week .day-box .card-header {
       padding: 3px; }
 
+@media screen and (max-width: 1000px) {
+  .day-box {
+    width: 100% !important; } }
 footer .footer-heading {
   padding: 1.5rem 0 0rem 1rem; }
 footer .footer-subheading {
@@ -101,6 +104,9 @@ footer .footer-list a {
 
 .col-md-11-5 {
   width: 95.8333%; }
+
+.col-lg-1-5 {
+  width: 12.5%; }
 
 .carousel {
   padding: 1rem 0 1rem;

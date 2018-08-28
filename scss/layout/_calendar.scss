@@ -38,3 +38,9 @@
         #sat {}
     }
 }
+
+@media screen and (max-width: 1000px) {
+    .day-box {
+        width: 100% !important; //I know it's bad practice to use this but this media query needs to override everything else
+    }
+}
