@@ -44,7 +44,7 @@ function calendarInit() {
 function generateCalendar(sundayDate) {
     //generate header
     saturdayDate = adjustDate(sundayDate, 6);
-    document.getElementById('calendarDateRangeHeader').innerHTML = parseInt(sundayDate.getMonth() + 1) + '/' + sundayDate.getDate() + '/' + sundayDate.getFullYear() + ' - ' + parseInt(saturdayDate.getMonth() + 1) + '/' + saturdayDate.getDate() + '/' + saturdayDate.getFullYear();
+    document.getElementById('calendarDateRangeHeader').innerHTML = parseInt(sundayDate.getMonth() + 1) + '/' + sundayDate.getDate() + '/' + parseInt(sundayDate.getFullYear()-2000) + ' - ' + parseInt(saturdayDate.getMonth() + 1) + '/' + saturdayDate.getDate() + '/' + parseInt(saturdayDate.getFullYear()-2000);
     //generate boxes for each day
     generateNewWeek();
 
@@ -160,7 +160,7 @@ function monthView() {
     weekIndex = firstWeekIndex;
     resetCalendar();
     //set calendar header to month name
-    document.getElementById('calendarDateRangeHeader').innerHTML = monthFullName(startOfMonth.getMonth()+1);
+    document.getElementById('calendarDateRangeHeader').innerHTML = monthFullName(startOfMonth.getMonth()+1) +" "+ startOfMonth.getFullYear();
 
     //Adjust calendar controls to month view
     document.getElementById('toggleCalendarView').innerHTML = 
