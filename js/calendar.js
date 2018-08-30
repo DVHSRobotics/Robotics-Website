@@ -11,7 +11,7 @@ var blankCalendar = `<div class="col-md-1-5"></div>` //a spacing column to prope
 var isMobileView = false;
 var isWeekView = true;
 //raw JSON data of the events retrieved from calendar GAPI
-var rawEventsList;
+var rawEventsList = [];
 //-------------------------------------------------------------------------------------------------------------------------------------------
 //Calendar generation functions
 //-------------------------------------------------------------------------------------------------------------------------------------------
@@ -67,7 +67,7 @@ function fillEvents(eventsList, selectedDate, detailed) {
     var useDefaultBlock = true;
     var htmlBlock = "";
     var numberOfEvents = 0; //reccords number of events on calendar
-    eventsList.forEach(element => {
+    rawEventsList.forEach(element => {
         var eventStartTime = new Date(element.start.dateTime);
         var eventEndTime = new Date(element.end.dateTime);
         if (areDatesSame(eventStartTime, selectedDate)) {
@@ -132,12 +132,11 @@ function prevMonth() {
 }
 
 function monthView() {
-    isWeekView = false;
     var currentMonth = currentDate.getMonth() + monthIndex;
     var sundayDate = getSunday(adjustDate(currentDate, weekIndex * 7));
     var saturdayDate = adjustDate(sundayDate, 6); //the date of saturday of the same week as the sunday date
     var startOfMonth = new Date(currentDate.getFullYear(), currentMonth, 1); //set sstart of month to 1st of selected month
-    var endOfMonth = new Date(currentDate.getFullYear(), startOfMonth.getMonth(), maxDaysOfMonth(startOfMonth.getMonth())); //end of month is the same month as defined in the startOfMonth
+    var endOfMonth = new Date(currentDate.getFullYear(), startOfMonth.getMonth(), maxDaysOfMonth(startOfMonth)); //end of month is the same month as defined in the startOfMonth
 
     var firstWeekIndex = weekIndexDifference(currentDate, startOfMonth);
     var lastWeekIndex = weekIndexDifference(currentDate, endOfMonth);
@@ -167,6 +166,8 @@ function monthView() {
     for (var i = firstWeekIndex; i <= lastWeekIndex; i++) {
         generateNewWeek();
     }
+
+    isWeekView = false;
 
 }
 
@@ -397,8 +398,10 @@ function hightlightToday(day) {
     }
 }
 
-//returns the number of days in the month 
-function maxDaysOfMonth(monthToCheck) {
+//returns the number of days in the month given a Date object
+function maxDaysOfMonth(dateToCheck) {
+    var monthToCheck = parseInt(dateToCheck.getMonth() +1);
+    var year = dateToCheck.getFullYear();
     if ((monthToCheck <= 7 && monthToCheck % 2 === 1) || (monthToCheck >= 8 && monthToCheck % 2 === 0)) {
         return 31;
     } else if (monthToCheck === 2) { //special condition for February
