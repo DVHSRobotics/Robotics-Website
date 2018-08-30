@@ -60,7 +60,6 @@ function generateNewWeek() {
         `;
     }
     weekIndex++;
-    resizeEventBoxes(selectedDate);
 }
 
 //returns a string of HTML to render all events for the selected day
@@ -95,18 +94,8 @@ function fillEvents(eventsList, selectedDate, detailed) {
     if (useDefaultBlock) {
         return defaultBlock;
     } else {
-        // htmlBlock = htmlBlock.substr(0, htmlBlock.length - 6); //cuts out div tag at end so whitespace can be appended
-        // for (var i = 0; i < 3 - numberOfEvents; i++) { //fills remaining space on calendar block with whitespace
-        //     htmlBlock += "<br>";
-        // }
-        // htmlBlock += "</div>"
         return htmlBlock;
     }
-}
-
-function resizeEventBoxes(selectedDate) {
-    var numberOfLines = document.getElementById(selectedDate.toString()).offsetHeight/ 48;
-    console.log(numberOfLines);
 }
 
 //Changes calendar display to next week
@@ -173,7 +162,7 @@ function monthView() {
     for (var i = firstWeekIndex; i <= lastWeekIndex; i++) {
         generateNewWeek();
     }
-
+    document.getElementById('calendar-bottom-padding').style.height = 0;
     isWeekView = false;
 
 }
@@ -206,6 +195,7 @@ function weekView() {
         <i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i>
     </button>`;
 
+    document.getElementById('calendar-bottom-padding').style.height = '30rem';
     isWeekView = true;
 
 }
