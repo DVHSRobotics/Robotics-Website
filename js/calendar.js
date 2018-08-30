@@ -6,7 +6,6 @@ var currentDate = new Date();
 var weekIndex = 0; //number of weeks displaced from current week (signed). Used as the index for the generateNewWeek() function
 var monthIndex = 0; //number of months displaced from current month (signed)
 var daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-var blankCalendar = `<div class="col-md-1-5"></div>` //a spacing column to properly setup the calendar
 //booleans to track view state
 var isMobileView = false;
 var isWeekView = true;
@@ -51,7 +50,9 @@ function generateNewWeek() {
                         </div>
                         <div class="card-body ` + hightlightToday(selectedDate) + `">
                             <div class="row">
-                            ` + fillEvents(rawEventsList, selectedDate, false) + `
+                                <div class="col-sm-12">
+                                    ` + fillEvents(rawEventsList, selectedDate, false) + `
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -75,16 +76,16 @@ function fillEvents(eventsList, selectedDate, detailed) {
             if (detailed) { //if detailed data is requested, return event details as well
                 useDefaultBlock = false;
                 numberOfEvents++;
-                htmlBlock += `<div class="col-sm-12 calendar-event">
+                htmlBlock += `<div class="row"><div class="col-sm-12 calendar-event">
                                 ` + formatTime(eventStartTime) + `-` + formatTime(eventEndTime) + ` ` + element.summary + `
                                 <p>` + element.summary + `</p>
-                            </div>`;
+                            </div></div>`;
             } else {
                 useDefaultBlock = false;
                 numberOfEvents++;
-                htmlBlock += `<div class="col-sm-12 calendar-event">
+                htmlBlock += `<div class="row"><div class="col-sm-12 calendar-event">
                                 ` + formatTime(eventStartTime) + ` ` + element.summary + `
-                            </div>`;
+                            </div></div>`;
             }
 
         } else {
@@ -452,10 +453,6 @@ var screenSizeQuery = window.matchMedia("(max-width: 1000px)")
 calendarMobileView(screenSizeQuery) // Call listener function at run time
 screenSizeQuery.addListener(calendarMobileView) // Attach listener function on state changes
 //-------------------------------------------------------------------------------------------------
-
-//gAPI date format
-// EventList.items[i].start.dateTime;
-//can be directly used as date object
 
 //makes get request to calendar gAPI for events
 function start() {
