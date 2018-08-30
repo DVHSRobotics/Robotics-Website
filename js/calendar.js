@@ -7,26 +7,11 @@ var weekIndex = 0; //number of weeks displaced from current week (signed). Used 
 var monthIndex = 0; //number of months displaced from current month (signed)
 var daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 var blankCalendar = `<div class="col-md-1-5"></div>` //a spacing column to properly setup the calendar
+//booleans to track view state
 var isMobileView = false;
 var isWeekView = true;
-var dummyEvents = [ //events for testing purposes
-    {
-        dateTime: "2018-08-29T06:00:00-06:00",
-        title: "Event 1",
-        details: "Lorem ipsum cat dog mouse"
-    },
-    {
-        dateTime: "2018-08-29T08:00:00-06:00",
-        title: "Event 3",
-        details: "Lorem ipsum bla bla bla"
-    },
-    {
-        dateTime: "2018-09-02T02:00:00-06:00",
-        title: "Event 2",
-        details: "Lorem ipsum chocolate vanilla strawberry"
-    }
-];
-
+//raw JSON data of the events retrieved from calendar GAPI
+var rawEventsList;
 //-------------------------------------------------------------------------------------------------------------------------------------------
 //Calendar generation functions
 //-------------------------------------------------------------------------------------------------------------------------------------------
@@ -65,7 +50,7 @@ function generateNewWeek() {
                         </div>
                         <div class="card-body ` + hightlightToday(adjustDate(sundayDate, i)) + `">
                             <div class="row">
-                            ` + fillEvents(dummyEvents, adjustDate(sundayDate, i), false) + `
+                            ` + fillEvents(rawEventsList, adjustDate(sundayDate, i), false) + `
                             </div>
                         </div>
                     </div>
@@ -82,21 +67,23 @@ function fillEvents(eventsList, selectedDate, detailed) {
     var useDefaultBlock = true;
     var htmlBlock = "";
     var numberOfEvents = 0; //reccords number of events on calendar
-    eventsList.forEach(element => {
-        var eventStartTime = new Date(element.dateTime);
+    var i = 0; //counter for for each loop
+    eventsList[0].items.forEach(element => {
+        var eventStartTime = new Date(element.start.dateTime);
+        var eventEndTime = new Date(element.end.dateTime);
         if (areDatesSame(eventStartTime, selectedDate)) {
             if (detailed) { //if detailed data is requested, return event details as well
                 useDefaultBlock = false;
                 numberOfEvents++;
                 htmlBlock += `<div class="col-sm-12 calendar-event">
-                                ` + formatTime(eventStartTime) + ` ` + element.title + `
-                                <p>` + element.details + `</p>
+                                ` + formatTime(eventStartTime) + `-` + formatTime(eventEndTime) + ` ` + element.summary + `
+                                <p>` + element.summary + `</p>
                             </div>`;
             } else {
                 useDefaultBlock = false;
                 numberOfEvents++;
                 htmlBlock += `<div class="col-sm-12 calendar-event">
-                                ` + formatTime(eventStartTime) + ` ` + element.title + `
+                                ` + formatTime(eventStartTime) + ` ` + element.summary + `
                             </div>`;
             }
 
@@ -224,7 +211,7 @@ function resetCalendar() {
 function agendaView(date) {
     date = new Date(date); //convert the string date into date object
     document.getElementById('weeks').innerHTML = `<div class="row" id="agenda"></div>`; //clear calendar to be regenerated
-    document.getElementById('agenda').innerHTML = fillEvents(dummyEvents, date, true); //get events with details
+    document.getElementById('agenda').innerHTML = fillEvents(rawEventsList, date, true); //get events with details
 
     document.getElementById('toggleCalendarView').innerHTML =
         `<button class="btn btn-primary btn-sm" id="toggleCalendarView" onclick="weekView()">
@@ -475,16 +462,16 @@ screenSizeQuery.addListener(calendarMobileView) // Attach listener function on s
 function start() {
     // Initializes the client with the API key and the Translate API.
     gapi.client.init({
-        'apiKey': '<INSERT API KEY HERE>',
+        'apiKey': 'KEY HERE',
         'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
     }).then(function () {
         // Executes an API request, and returns a Promise.
         // The method name `language.translations.list` comes from the API discovery.
         return gapi.client.calendar.events.list({
-            calendarId: '<INSERT CALENDAR ID HERE>'
+            calendarId: 'business@dvhsrobotics.org'
         });
     }).then(function (response) {
-        console.log(response);
+        rawEventsList = response;
     }, function (reason) {
         console.log('Error: ' + reason.result.error.message);
     });
@@ -494,7 +481,7 @@ function start() {
 //Start of code to run
 //---------------------------------
 
-calendarInit();
-
 // Loads the JavaScript client library and invokes `start` afterwards.
 gapi.load('client', start);
+
+calendarInit();
