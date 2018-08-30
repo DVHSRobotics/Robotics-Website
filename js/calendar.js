@@ -67,8 +67,7 @@ function fillEvents(eventsList, selectedDate, detailed) {
     var useDefaultBlock = true;
     var htmlBlock = "";
     var numberOfEvents = 0; //reccords number of events on calendar
-    var i = 0; //counter for for each loop
-    eventsList[0].items.forEach(element => {
+    eventsList.forEach(element => {
         var eventStartTime = new Date(element.start.dateTime);
         var eventEndTime = new Date(element.end.dateTime);
         if (areDatesSame(eventStartTime, selectedDate)) {
@@ -462,16 +461,16 @@ screenSizeQuery.addListener(calendarMobileView) // Attach listener function on s
 function start() {
     // Initializes the client with the API key and the Translate API.
     gapi.client.init({
-        'apiKey': 'KEY HERE',
+        'apiKey': 'AIzaSyA7sg0i4dp41dzkS2gbbDI7rmLh5iaXuPc',
         'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
     }).then(function () {
         // Executes an API request, and returns a Promise.
-        // The method name `language.translations.list` comes from the API discovery.
         return gapi.client.calendar.events.list({
             calendarId: 'business@dvhsrobotics.org'
         });
     }).then(function (response) {
-        rawEventsList = response;
+        rawEventsList = response.result.items;
+        calendarInit();//intialize the calendar
     }, function (reason) {
         console.log('Error: ' + reason.result.error.message);
     });
@@ -481,7 +480,5 @@ function start() {
 //Start of code to run
 //---------------------------------
 
-// Loads the JavaScript client library and invokes `start` afterwards.
+// Loads the JavaScript client library and invokes `start` afterwards, and then initializes the calendar
 gapi.load('client', start);
-
-calendarInit();
