@@ -15,7 +15,8 @@
     #weeks {
         text-align: left;
         .day-box {
-            padding: 3px;
+            padding-left: 3px;
+            padding-right: 3px;
             .date-label {
                 color: red;
                 padding: 0;
@@ -32,6 +33,12 @@
             }
             .calendar-event {
                 font-size: 1rem;
+                height: 4rem;
+                position: relative;
+                top: -0.5rem;
+            }
+            .default-calendar-block {
+                height: 4rem;
             }
         }
     }

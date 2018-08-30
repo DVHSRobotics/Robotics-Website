@@ -39,18 +39,19 @@ function generateNewWeek() {
     var sundayDate = adjustDate(getSunday(new Date()), weekIndex * 7);
     document.getElementById('weeks').innerHTML += `<div class="col-sm-11"><div class="row" id="week` + weekIndex + `"><div class="col-md-1-5"></div></div></div>` //add opening elements to new week
     for (var i = 0; i < 7; i++) { //generate each day block for the week
-        var boxDate = adjustDate(sundayDate, i).getDate();
+        var selectedDate = adjustDate(sundayDate, i);
+        var boxDate = selectedDate.getDate();
         document.getElementById('week' + weekIndex).innerHTML += `
             <div class="col-lg-1-5 day-box">
-                <a href='#' id='` + daysOfWeek[i] + `' onclick="agendaView('` + adjustDate(sundayDate, i) + `')">
+                <a href='#' id='` + selectedDate + `' onclick="agendaView('` + selectedDate + `')">
                     <div class="card">
                         <div class="card-header">
                             <div class="day-label">` + daysOfWeek[i] + `</div> 
-                            <div class="date-label">` + boxDate + ` ` + monthShortName(adjustDate(sundayDate, i).getMonth() + 1) + `</div>
+                            <div class="date-label">` + boxDate + ` ` + monthShortName(selectedDate.getMonth() + 1) + `</div>
                         </div>
-                        <div class="card-body ` + hightlightToday(adjustDate(sundayDate, i)) + `">
+                        <div class="card-body ` + hightlightToday(selectedDate) + `">
                             <div class="row">
-                            ` + fillEvents(rawEventsList, adjustDate(sundayDate, i), false) + `
+                            ` + fillEvents(rawEventsList, selectedDate, false) + `
                             </div>
                         </div>
                     </div>
@@ -59,11 +60,12 @@ function generateNewWeek() {
         `;
     }
     weekIndex++;
+    resizeEventBoxes(selectedDate);
 }
 
 //returns a string of HTML to render all events for the selected day
 function fillEvents(eventsList, selectedDate, detailed) {
-    var defaultBlock = '<div class="col-sm-12"><br><br><br></div>' //default calendar html when no events are detected
+    var defaultBlock = '<div class="col-sm-12 default-calendar-block"><br><br><br></div>' //default calendar html when no events are detected
     var useDefaultBlock = true;
     var htmlBlock = "";
     var numberOfEvents = 0; //reccords number of events on calendar
@@ -93,13 +95,18 @@ function fillEvents(eventsList, selectedDate, detailed) {
     if (useDefaultBlock) {
         return defaultBlock;
     } else {
-        htmlBlock = htmlBlock.substr(0, htmlBlock.length - 6); //cuts out div tag at end so whitespace can be appended
-        for (var i = 0; i < 3 - numberOfEvents; i++) { //fills remaining space on calendar block with whitespace
-            htmlBlock += "<br>";
-        }
-        htmlBlock += "</div>"
+        // htmlBlock = htmlBlock.substr(0, htmlBlock.length - 6); //cuts out div tag at end so whitespace can be appended
+        // for (var i = 0; i < 3 - numberOfEvents; i++) { //fills remaining space on calendar block with whitespace
+        //     htmlBlock += "<br>";
+        // }
+        // htmlBlock += "</div>"
         return htmlBlock;
     }
+}
+
+function resizeEventBoxes(selectedDate) {
+    var numberOfLines = document.getElementById(selectedDate.toString()).offsetHeight/ 48;
+    console.log(numberOfLines);
 }
 
 //Changes calendar display to next week
