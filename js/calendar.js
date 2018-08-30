@@ -44,7 +44,7 @@ function calendarInit() {
 function generateCalendar(sundayDate) {
     //generate header
     saturdayDate = adjustDate(sundayDate, 6);
-    document.getElementById('calendarDateRangeHeader').innerHTML = parseInt(sundayDate.getMonth() + 1) + '/' + sundayDate.getDate() + '/' + parseInt(sundayDate.getFullYear()-2000) + ' - ' + parseInt(saturdayDate.getMonth() + 1) + '/' + saturdayDate.getDate() + '/' + parseInt(saturdayDate.getFullYear()-2000);
+    document.getElementById('calendarDateRangeHeader').innerHTML = parseInt(sundayDate.getMonth() + 1) + '/' + sundayDate.getDate() + '/' + parseInt(sundayDate.getFullYear() - 2000) + ' - ' + parseInt(saturdayDate.getMonth() + 1) + '/' + saturdayDate.getDate() + '/' + parseInt(saturdayDate.getFullYear() - 2000);
     //generate boxes for each day
     generateNewWeek();
 
@@ -61,7 +61,7 @@ function generateNewWeek() {
                     <div class="card">
                         <div class="card-header">
                             <div class="day-label">` + daysOfWeek[i] + `</div> 
-                            <div class="date-label">` + boxDate +` `+monthShortName(adjustDate(sundayDate, i).getMonth()+1)+ `</div>
+                            <div class="date-label">` + boxDate + ` ` + monthShortName(adjustDate(sundayDate, i).getMonth() + 1) + `</div>
                         </div>
                         <div class="card-body ` + hightlightToday(adjustDate(sundayDate, i)) + `">
                             <div class="row">
@@ -85,21 +85,21 @@ function fillEvents(eventsList, selectedDate, detailed) {
     eventsList.forEach(element => {
         var eventStartTime = new Date(element.dateTime);
         if (areDatesSame(eventStartTime, selectedDate)) {
-            if(detailed) {//if detailed data is requested, return event details as well
+            if (detailed) { //if detailed data is requested, return event details as well
                 useDefaultBlock = false;
                 numberOfEvents++;
                 htmlBlock += `<div class="col-sm-12 calendar-event">
                                 ` + formatTime(eventStartTime) + ` ` + element.title + `
-                                <p>`+element.details+`</p>
+                                <p>` + element.details + `</p>
                             </div>`;
-            }else {
+            } else {
                 useDefaultBlock = false;
                 numberOfEvents++;
                 htmlBlock += `<div class="col-sm-12 calendar-event">
                                 ` + formatTime(eventStartTime) + ` ` + element.title + `
                             </div>`;
             }
-            
+
         } else {
 
         }
@@ -126,7 +126,7 @@ function nextWeek() {
 
 //Changes calendar display to previous week
 function prevWeek() {
-    weekIndex-=2;//for some reason decrementing by 2 is necessary to decrement by one
+    weekIndex -= 2; //for some reason decrementing by 2 is necessary to decrement by one
     var newSundayDate = getSunday(adjustDate(new Date(), weekIndex * 7)); //calculate the new sunday date based on the selected week
     document.getElementById('weeks').innerHTML = ""; //clear calendar to be regenerated
     generateCalendar(newSundayDate);
@@ -147,11 +147,11 @@ function prevMonth() {
 
 function monthView() {
     isWeekView = false;
-    var currentMonth = currentDate.getMonth()+monthIndex;
+    var currentMonth = currentDate.getMonth() + monthIndex;
     var sundayDate = getSunday(adjustDate(currentDate, weekIndex * 7));
-    var saturdayDate = adjustDate(sundayDate, 6);//the date of saturday of the same week as the sunday date
-    var startOfMonth = new Date(currentDate.getFullYear(), currentMonth, 1);//set sstart of month to 1st of selected month
-    var endOfMonth = new Date(currentDate.getFullYear(), startOfMonth.getMonth(), maxDaysOfMonth(startOfMonth.getMonth()));//end of month is the same month as defined in the startOfMonth
+    var saturdayDate = adjustDate(sundayDate, 6); //the date of saturday of the same week as the sunday date
+    var startOfMonth = new Date(currentDate.getFullYear(), currentMonth, 1); //set sstart of month to 1st of selected month
+    var endOfMonth = new Date(currentDate.getFullYear(), startOfMonth.getMonth(), maxDaysOfMonth(startOfMonth.getMonth())); //end of month is the same month as defined in the startOfMonth
 
     var firstWeekIndex = weekIndexDifference(currentDate, startOfMonth);
     var lastWeekIndex = weekIndexDifference(currentDate, endOfMonth);
@@ -160,23 +160,23 @@ function monthView() {
     weekIndex = firstWeekIndex;
     resetCalendar();
     //set calendar header to month name
-    document.getElementById('calendarDateRangeHeader').innerHTML = monthFullName(startOfMonth.getMonth()+1) +" "+ startOfMonth.getFullYear();
+    document.getElementById('calendarDateRangeHeader').innerHTML = monthFullName(startOfMonth.getMonth() + 1) + " " + startOfMonth.getFullYear();
 
     //Adjust calendar controls to month view
-    document.getElementById('toggleCalendarView').innerHTML = 
+    document.getElementById('toggleCalendarView').innerHTML =
         `<button class="btn btn-primary btn-sm" onclick="weekView()">
             Week View
         </button>`;
-    document.getElementById('calendarNavPrevButton').innerHTML = 
+    document.getElementById('calendarNavPrevButton').innerHTML =
         `<button class="btn btn-primary btn-sm" onclick="prevMonth()">
             <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
         </button>`;
-    document.getElementById('calendarNavNextButton').innerHTML = 
-    `<button class="btn btn-primary btn-sm" onclick="nextMonth()">
+    document.getElementById('calendarNavNextButton').innerHTML =
+        `<button class="btn btn-primary btn-sm" onclick="nextMonth()">
         <i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i>
     </button>`;
 
-    
+
     //generate each week of the month
     for (var i = firstWeekIndex; i <= lastWeekIndex; i++) {
         generateNewWeek();
@@ -186,29 +186,29 @@ function monthView() {
 
 function weekView() {
     document.getElementById('weeks').innerHTML = ""; //clear calendar to be regenerated
-    if(isWeekView) {//if already in week view (like user is just adjusting to mobile viewport) maintain current week index
-        weekIndex--;//not sure why i have to decrement this but it works
+    if (isWeekView) { //if already in week view (like user is just adjusting to mobile viewport) maintain current week index
+        weekIndex--; //not sure why i have to decrement this but it works
         generateCalendar(getSunday(adjustDate(new Date(), (weekIndex) * 7)));
-    }else {
+    } else {
         //Set calendar to first week of currently selected month
-        var currentMonth = currentDate.getMonth()+monthIndex;
+        var currentMonth = currentDate.getMonth() + monthIndex;
         var startOfMonth = new Date(currentDate.getFullYear(), currentMonth, 1);
         var firstWeekIndex = weekIndexDifference(currentDate, startOfMonth);
         weekIndex = firstWeekIndex;
         generateCalendar(getSunday(startOfMonth));
     }
-    
+
     //Adjust calendar controls for week view
-    document.getElementById('toggleCalendarView').innerHTML = 
+    document.getElementById('toggleCalendarView').innerHTML =
         `<button class="btn btn-primary btn-sm" id="toggleCalendarView" onclick="monthView()">
             Month View
         </button>`;
-    document.getElementById('calendarNavPrevButton').innerHTML = 
+    document.getElementById('calendarNavPrevButton').innerHTML =
         `<button class="btn btn-primary btn-sm" id="calendarNavPrevButton" onclick="prevWeek()">
             <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
         </button>`;
-    document.getElementById('calendarNavNextButton').innerHTML = 
-    `<button class="btn btn-primary btn-sm" id="calendarNavNextButton" onclick="nextWeek()">
+    document.getElementById('calendarNavNextButton').innerHTML =
+        `<button class="btn btn-primary btn-sm" id="calendarNavNextButton" onclick="nextWeek()">
         <i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i>
     </button>`;
 
@@ -222,11 +222,11 @@ function resetCalendar() {
 
 //switches view to day's schedule
 function agendaView(date) {
-    date = new Date(date);//convert the string date into date object
+    date = new Date(date); //convert the string date into date object
     document.getElementById('weeks').innerHTML = `<div class="row" id="agenda"></div>`; //clear calendar to be regenerated
-    document.getElementById('agenda').innerHTML = fillEvents(dummyEvents, date, true);//get events with details
+    document.getElementById('agenda').innerHTML = fillEvents(dummyEvents, date, true); //get events with details
 
-    document.getElementById('toggleCalendarView').innerHTML = 
+    document.getElementById('toggleCalendarView').innerHTML =
         `<button class="btn btn-primary btn-sm" id="toggleCalendarView" onclick="weekView()">
             Back to Week View
         </button>`;
@@ -239,7 +239,7 @@ function agendaView(date) {
 //grabs date of sunday of current week
 function getSunday(dateToCheck) {
     var sundayDate = adjustDate(dateToCheck, -dateToCheck.getDay());
-    var sundayDate = new Date(sundayDate.getFullYear(),sundayDate.getMonth(), sundayDate.getDate());
+    var sundayDate = new Date(sundayDate.getFullYear(), sundayDate.getMonth(), sundayDate.getDate());
     return sundayDate;
 }
 
@@ -443,31 +443,23 @@ function weekIndexDifference(firstDate, lastDate) {
 //End of Definitions
 //--------------------------------------
 
-
-//----------------------------------
-//Start of code to run
-//---------------------------------
-
-calendarInit();
-
-
 //Listener for calendar mobile view
 //-------------------------------------------------------------------------------------------------
 function calendarMobileView(x) {
     if (x.matches && !isMobileView) { // If media query matches and previously not in mobile view
         isMobileView = true;
         weekView();
-        document.getElementById('toggleCalendarView').innerHTML = "";//remove ability to toggle to month view for mobile users
-    } else if (!x.matches){
+        document.getElementById('toggleCalendarView').innerHTML = ""; //remove ability to toggle to month view for mobile users
+    } else if (!x.matches) {
         //if screen is not a mobile viewport give back desktop controls
         isMobileView = false;
-        document.getElementById('toggleCalendarView').innerHTML = 
-        `<button class="btn btn-primary btn-sm" onclick="monthView()">
+        document.getElementById('toggleCalendarView').innerHTML =
+            `<button class="btn btn-primary btn-sm" onclick="monthView()">
             Month View
         </button>`;
     } else {
         //if already in mobile view, do nothing
-    } 
+    }
 }
 
 var screenSizeQuery = window.matchMedia("(max-width: 1000px)")
@@ -478,26 +470,31 @@ screenSizeQuery.addListener(calendarMobileView) // Attach listener function on s
 //gAPI date format
 // EventList.items[i].start.dateTime;
 //can be directly used as date object
-//console.log(new Date("2012-07-11T03:30:00-06:00"));
 
-//starts calendar api request -- Relies on API key which will probably be non-functional when using service account/oauth
-// function start() {
-//     // 2. Initialize the JavaScript client library.
-//     gapi.client.init({
-//         'apiKey': 'AIzaSyAEZ93lX2Y2M_IrL4GRsGTm2ltYTrdEr4w',
-//         // clientId and scope are optional if auth is not required.
-//         // 'clientId': 'YOUR_WEB_CLIENT_ID.apps.googleusercontent.com',
-//         // 'scope': 'profile',
-//     }).then(function () {
-//         // 3. Initialize and make the API request.
-//         return gapi.client.request({
-//             'path': 'https://www.googleapis.com/calendar/v3/calendars/en.usa#holiday@group.v.calendar.google.com/events',
-//         })
-//     }).then(function (response) {
-//         console.log(response.result);
-//     }, function (reason) {
-//         console.log('Error: ' + reason.result.error.message);
-//     });
-// };
-// // 1. Load the JavaScript client library.
-// gapi.load('client', start);
+//makes get request to calendar gAPI for events
+function start() {
+    // Initializes the client with the API key and the Translate API.
+    gapi.client.init({
+        'apiKey': '<INSERT API KEY HERE>',
+        'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
+    }).then(function () {
+        // Executes an API request, and returns a Promise.
+        // The method name `language.translations.list` comes from the API discovery.
+        return gapi.client.calendar.events.list({
+            calendarId: '<INSERT CALENDAR ID HERE>'
+        });
+    }).then(function (response) {
+        console.log(response);
+    }, function (reason) {
+        console.log('Error: ' + reason.result.error.message);
+    });
+};
+
+//----------------------------------
+//Start of code to run
+//---------------------------------
+
+calendarInit();
+
+// Loads the JavaScript client library and invokes `start` afterwards.
+gapi.load('client', start);
