@@ -1,0 +1,39 @@
+nav.navbar {
+
+    background-color: #0BC4B9;
+
+    img.navbar-brand {
+        width: 90px;
+        height: auto;
+    }
+
+    button.navbar-toggler {
+        .navbar-toggler-icon {
+            i.fa-bars {
+                color: white;
+                &:hover {
+                    color: black;
+                }
+            }
+        }
+    }
+
+    .navbar-collapse {
+        ul {
+            li.nav-item {
+                a.nav-link{
+                    color: white;
+                    &:hover {
+                        color: black;
+                    }
+                }
+                button {
+                    padding: 0;
+                    padding-right: 5px;
+                    font-size: 0.8rem;
+
+                }
+            }
+        }
+    }
+}

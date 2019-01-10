@@ -1,0 +1,58 @@
+{
+  "_from": "mdbootstrap",
+  "_id": "mdbootstrap@4.5.8",
+  "_inBundle": false,
+  "_integrity": "sha512-nV7AVocOA1b385XoOOUSzT7SAXp1xltHQiYzHokR2HIwNhpDQXL/AR4Mi15NA8kv4+0oqOVbC9huXjei9aqK4A==",
+  "_location": "/mdbootstrap",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "mdbootstrap",
+    "name": "mdbootstrap",
+    "escapedName": "mdbootstrap",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/mdbootstrap/-/mdbootstrap-4.5.8.tgz",
+  "_shasum": "6e1d79991eb7462544f9c81c4610d58c39415b3d",
+  "_spec": "mdbootstrap",
+  "_where": "C:\\Users\\ramee\\Documents\\GitHub\\Robotics-Website",
+  "author": {
+    "name": "MDBootstrap"
+  },
+  "bugs": {
+    "url": "https://github.com/mdbootstrap/bootstrap-material-design/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Material Design for Bootstrap (MDB) is a powerful Material Design UI KIT for most popular HTML, CSS, and JS framework - Bootstrap.",
+  "homepage": "https://mdbootstrap.com",
+  "keywords": [
+    "material",
+    "design",
+    "bootstrap",
+    "mdbootstrap",
+    "mdb",
+    "framework",
+    "css",
+    "mobile-first",
+    "responsive"
+  ],
+  "license": "Custom license (read license.pdf)",
+  "main": "js/mdb.min.js",
+  "name": "mdbootstrap",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mdbootstrap/bootstrap-material-design.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "4.5.8"
+}

@@ -1,0 +1,25 @@
+.jumbotron {
+    background-color: #666;
+    margin: 0;
+    .container {
+        margin: auto;
+        text-align: center;
+        color: #ededed;
+        button.btn-rounded{
+            border-radius: 50px;
+            a {
+                color: white;
+                &:hover {
+                    color: black;
+                }
+            }
+        }
+
+    }
+}
+
+@media screen and (max-width: 600px) {
+    p {
+        font-size: .85rem !important;//this is going to become a trend isnt it
+    }
+}

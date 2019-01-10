@@ -1,0 +1,12 @@
+.sponsor {
+    text-align: center;
+    padding: 1rem;
+    &:hover {
+        background-color: lighten(#666, 15%);
+    }
+
+    img {
+        height: 200px;
+        width: auto;
+    }
+}

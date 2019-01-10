@@ -1,0 +1,79 @@
+.calendar {
+    text-align: center;
+    padding-top: 5%;
+}
+
+.calendar-container {
+    text-align: center;
+    .card {
+        margin: 0;
+    }
+    h5 {
+        text-align: center;
+        display: inline-block;
+    }
+    #weeks {
+        text-align: left;
+        .day-box {
+            padding-left: 3px;
+            padding-right: 3px;
+            .date-label {
+                color: red;
+                padding: 0;
+                float: right;
+                display: inline-block;
+            }
+            .day-label {
+                color: green;
+                padding: 0;
+                display: inline-block;
+            }
+            .card-header {
+                padding: 3px;
+            }
+            .card-body {
+                max-height: 6rem;
+                .calendar-event-row {
+                    position: relative;
+                    top: -1rem;
+                }
+                .calendar-event {
+                    margin: 0;
+                    padding: 0;
+                    font-size: 0.9rem;
+                    height: 4rem;
+                    position: relative;
+                    top: -0.5rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-height: 4rem;
+                }
+                .default-calendar-block {
+                    height: 4rem;
+                }
+            }
+        }
+    }
+    #calendarNavNextButton {
+        text-align: center;
+        display: inline-block;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    #calendarNavPrevButton {
+        text-align: center;
+        display: inline-block;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    #calendar-bottom-padding {
+        height: 30rem;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .day-box {
+        width: 100% !important; //I know it's bad practice to use this but this media query needs to override everything else
+    }
+}

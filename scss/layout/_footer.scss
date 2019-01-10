@@ -1,0 +1,38 @@
+footer {
+    .footer-heading {
+        padding: 1.5rem 0 0rem 1rem;
+    }
+    .footer-subheading {
+        padding-left: 1rem;
+    }
+    .contact-email {
+        padding-left: 0;
+    }
+    .footer-list-heading {
+        padding-top: 1.5rem;
+    }
+    .footer-list {
+        a {
+            color: darken(#fff, 20%);
+            &:hover {
+                color: white;
+            }
+        }
+    }
+}
+
+.dark-footer {
+    background-color: #333;
+}
+
+@media screen and (max-width: 991px) {
+    footer {
+        padding-left: 0;
+        .footer-heading {
+            padding-left: 0;
+        }
+        .footer-subheading {
+            padding-left: 0;
+        }
+    }
+}

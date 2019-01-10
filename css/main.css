@@ -1,0 +1,260 @@
+nav.navbar {
+  background-color: #0BC4B9; }
+  nav.navbar img.navbar-brand {
+    width: 90px;
+    height: auto; }
+  nav.navbar button.navbar-toggler .navbar-toggler-icon i.fa-bars {
+    color: white; }
+    nav.navbar button.navbar-toggler .navbar-toggler-icon i.fa-bars:hover {
+      color: black; }
+  nav.navbar .navbar-collapse ul li.nav-item a.nav-link {
+    color: white; }
+    nav.navbar .navbar-collapse ul li.nav-item a.nav-link:hover {
+      color: black; }
+  nav.navbar .navbar-collapse ul li.nav-item button {
+    padding: 0;
+    padding-right: 5px;
+    font-size: 0.8rem; }
+
+div.body-light {
+  background-color: #eee; }
+
+div.body-dark {
+  background-color: #666; }
+
+.calendar {
+  text-align: center;
+  padding-top: 5%; }
+
+.calendar-container {
+  text-align: center; }
+  .calendar-container .card {
+    margin: 0; }
+  .calendar-container h5 {
+    text-align: center;
+    display: inline-block; }
+  .calendar-container #weeks {
+    text-align: left; }
+    .calendar-container #weeks .day-box {
+      padding-left: 3px;
+      padding-right: 3px; }
+      .calendar-container #weeks .day-box .date-label {
+        color: red;
+        padding: 0;
+        float: right;
+        display: inline-block; }
+      .calendar-container #weeks .day-box .day-label {
+        color: green;
+        padding: 0;
+        display: inline-block; }
+      .calendar-container #weeks .day-box .card-header {
+        padding: 3px; }
+      .calendar-container #weeks .day-box .card-body {
+        max-height: 6rem; }
+        .calendar-container #weeks .day-box .card-body .calendar-event-row {
+          position: relative;
+          top: -1rem; }
+        .calendar-container #weeks .day-box .card-body .calendar-event {
+          margin: 0;
+          padding: 0;
+          font-size: 0.9rem;
+          height: 4rem;
+          position: relative;
+          top: -0.5rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-height: 4rem; }
+        .calendar-container #weeks .day-box .card-body .default-calendar-block {
+          height: 4rem; }
+  .calendar-container #calendarNavNextButton {
+    text-align: center;
+    display: inline-block;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem; }
+  .calendar-container #calendarNavPrevButton {
+    text-align: center;
+    display: inline-block;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem; }
+  .calendar-container #calendar-bottom-padding {
+    height: 30rem; }
+
+@media screen and (max-width: 1000px) {
+  .day-box {
+    width: 100% !important; } }
+footer .footer-heading {
+  padding: 1.5rem 0 0rem 1rem; }
+footer .footer-subheading {
+  padding-left: 1rem; }
+footer .contact-email {
+  padding-left: 0; }
+footer .footer-list-heading {
+  padding-top: 1.5rem; }
+footer .footer-list a {
+  color: #cccccc; }
+  footer .footer-list a:hover {
+    color: white; }
+
+.dark-footer {
+  background-color: #333; }
+
+@media screen and (max-width: 991px) {
+  footer {
+    padding-left: 0; }
+    footer .footer-heading {
+      padding-left: 0; }
+    footer .footer-subheading {
+      padding-left: 0; } }
+.col-md-1-5 {
+  width: 12.5%; }
+
+.col-md-2-5 {
+  width: 20.83333%; }
+
+.col-md-3-5 {
+  width: 29.16667%; }
+
+.col-md-4-5 {
+  width: 37.5%; }
+
+.col-md-5-5 {
+  width: 45.83333%; }
+
+.col-md-6-5 {
+  width: 54.16667%; }
+
+.col-md-7-5 {
+  width: 62.5%; }
+
+.col-md-8-5 {
+  width: 70.83333%; }
+
+.col-md-9-5 {
+  width: 79.16667%; }
+
+.col-md-10-5 {
+  width: 87.5%; }
+
+.col-md-11-5 {
+  width: 95.8333%; }
+
+.col-lg-1-5 {
+  width: 12.5%; }
+
+.col-sm-2-5 {
+  width: 20.83333%; }
+
+.carousel {
+  width: 100%; }
+  .carousel .carousel-control-prev .carousel-control-prev-icon i {
+    position: relative;
+    right: 2rem; }
+  .carousel .carousel-control-prev:hover {
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)); }
+    .carousel .carousel-control-prev:hover i {
+      text-shadow: 0px 0px 4px white; }
+  .carousel .carousel-control-next .carousel-control-next-icon i {
+    position: relative;
+    left: 2rem; }
+  .carousel .carousel-control-next:hover {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)); }
+    .carousel .carousel-control-next:hover i {
+      text-shadow: 0px 0px 4px white; }
+
+@media screen and (max-width: 600px) {
+  .carousel .carousel-control-next .carousel-control-next-icon {
+    position: relative;
+    left: -1.5rem; }
+  .carousel .carousel-control-prev .carousel-control-prev-icon {
+    position: relative;
+    right: -1.5rem; } }
+.jumbotron {
+  background-color: #666;
+  margin: 0; }
+  .jumbotron .container {
+    margin: auto;
+    text-align: center;
+    color: #ededed; }
+    .jumbotron .container button.btn-rounded {
+      border-radius: 50px; }
+      .jumbotron .container button.btn-rounded a {
+        color: white; }
+        .jumbotron .container button.btn-rounded a:hover {
+          color: black; }
+
+@media screen and (max-width: 600px) {
+  p {
+    font-size: .85rem !important; } }
+.name-box {
+  text-align: center;
+  line-height: 1.5rem;
+  margin: 0;
+  width: 100%; }
+
+.kickoff {
+  padding-left: 1rem;
+  padding-right: 1rem; }
+  .kickoff a {
+    color: red; }
+    .kickoff a:hover {
+      color: #b30000; }
+
+.our-robot {
+  padding-left: 1rem;
+  padding-right: 1rem; }
+
+.card {
+  margin: 8px 0px 8px; }
+  .card img.powerup {
+    padding: 1rem; }
+
+@media screen and (max-width: 992px) {
+  .card-side-column {
+    display: none; } }
+.sponsor {
+  text-align: center;
+  padding: 1rem; }
+  .sponsor:hover {
+    background-color: #8c8c8c; }
+  .sponsor img {
+    height: 200px;
+    width: auto; }
+
+.team-image {
+  margin: auto;
+  margin-bottom: 1rem;
+  text-align: center;
+  width: 100%;
+  max-height: 100%; }
+
+.team-image-sm {
+  margin: auto;
+  margin-bottom: 1rem;
+  text-align: center;
+  max-width: 100%;
+  max-height: 100%; }
+
+.header-dark {
+  color: black; }
+
+h1 {
+  text-align: center;
+  margin-top: 0;
+  color: white;
+  padding: 1rem; }
+
+h3 {
+  color: white;
+  text-align: center; }
+
+button {
+  color: white; }
+
+img {
+  text-align: center; }
+
+iframe {
+  padding: 0 0 2rem; }
+
+/*# sourceMappingURL=main.css.map */
