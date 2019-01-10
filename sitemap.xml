@@ -4,42 +4,43 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
 
 <url>
-  <loc>http://www.dvhsrobotics.org/</loc>
-  <lastmod>2018-02-11T19:35:42+00:00</lastmod>
+  <loc>https://www.dvhsrobotics.org/</loc>
+  <lastmod>2019-01-10T00:40:55+00:00</lastmod>
   <priority>1.00</priority>
-  <changefreq>daily</changefreq>
 </url>
 <url>
-  <loc>http://www.dvhsrobotics.org/index.html</loc>
-  <lastmod>2018-02-11T19:35:42+00:00</lastmod>
+  <loc>https://www.dvhsrobotics.org/index.html</loc>
+  <lastmod>2019-01-10T00:40:55+00:00</lastmod>
   <priority>0.80</priority>
-  <changefreq>daily</changefreq>
 </url>
 <url>
-  <loc>http://www.dvhsrobotics.org/Pages/OurTeam.html</loc>
-  <lastmod>2018-02-11T19:35:42+00:00</lastmod>
+  <loc>https://www.dvhsrobotics.org/pages/team.html</loc>
+  <lastmod>2019-01-10T00:40:55+00:00</lastmod>
   <priority>0.80</priority>
-  <changefreq>daily</changefreq>
 </url>
 <url>
-  <loc>http://www.dvhsrobotics.org/Pages/About.html</loc>
-  <lastmod>2018-02-11T19:35:42+00:00</lastmod>
+  <loc>https://www.dvhsrobotics.org/pages/sponsors.html</loc>
+  <lastmod>2019-01-10T00:40:55+00:00</lastmod>
   <priority>0.80</priority>
-  <changefreq>daily</changefreq>
 </url>
 <url>
-  <loc>http://www.dvhsrobotics.org/Pages/Sponsors.html</loc>
-  <lastmod>2018-02-11T19:35:42+00:00</lastmod>
+  <loc>https://www.dvhsrobotics.org/pages/calendar.html</loc>
+  <lastmod>2019-01-10T00:40:55+00:00</lastmod>
   <priority>0.80</priority>
-  <changefreq>daily</changefreq>
 </url>
 <url>
-  <loc>http://www.dvhsrobotics.org/Pages/Calendar.html</loc>
-  <lastmod>2018-02-11T19:35:42+00:00</lastmod>
+  <loc>https://www.dvhsrobotics.org/pages/webdevteam.html</loc>
+  <lastmod>2019-01-10T00:40:55+00:00</lastmod>
   <priority>0.80</priority>
-  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>https://www.dvhsrobotics.org/pages/customcalendar.html</loc>
+  <lastmod>2019-01-10T00:40:55+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 
 
